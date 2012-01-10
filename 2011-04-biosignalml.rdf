@@ -4,6 +4,7 @@
 <!DOCTYPE rdf:RDF [
     <!ENTITY time "http://www.w3.org/2006/time#" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
     <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
@@ -14,10 +15,11 @@
 ]>
 
 
-<rdf:RDF xmlns="http://www.biosignalml.org/ontologies/2011/04/biosignalml#"
+<rdf:RDF xmlns="http://www.semanticweb.org/owl/owlapi/turtle#"
      xml:base="http://www.biosignalml.org/ontologies/2011/04/biosignalml"
-     xmlns:biosignalml="http://www.biosignalml.org/ontologies/2011/04/biosignalml#"
+     xmlns:bsml="http://www.biosignalml.org/ontologies/2011/04/biosignalml#"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:time="http://www.w3.org/2006/time#"
      xmlns:tl="http://purl.org/NET/c4dm/timeline.owl#"
@@ -25,7 +27,10 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <owl:Ontology rdf:about="http://www.biosignalml.org/ontologies/2011/04/biosignalml"/>
+<!--    <owl:Ontology rdf:about="http://www.biosignalml.org/ontologies/2011/04/biosignalml">
+        <owl:imports rdf:resource="&obo;uo5.owl"/>
+        <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
+    </owl:Ontology> -->
     
 
 
@@ -185,7 +190,6 @@
     <owl:ObjectProperty rdf:about="&biosignalml;type">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:domain rdf:resource="&biosignalml;Signal"/>
-        <rdfs:range rdf:resource="&biosignalml;Type"/>
     </owl:ObjectProperty>
     
 
@@ -209,6 +213,17 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://www.biosignalml.org/ontologies/2011/04/biosignalml#index -->
+
+    <owl:DatatypeProperty rdf:about="&biosignalml;index">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment>The position of a Signal in a Recording.</rdfs:comment>
+        <rdfs:domain rdf:resource="&biosignalml;Signal"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
     
 
 
@@ -474,6 +489,7 @@
     <!-- http://www.biosignalml.org/ontologies/2011/04/biosignalml#UnitOfMeasure -->
 
     <owl:Class rdf:about="&biosignalml;UnitOfMeasure">
+        <rdfs:subClassOf rdf:resource="&obo;UO_0000000"/>
         <rdfs:comment>The class used to represent the types of measurement units used by signals. We define sublasses for common measurement units; these may possibly be defined as being equivalent to entities in a specialised units of measure ontology (eg. http://www.foodinformatics.nl/om-qc-1.2.owl).</rdfs:comment>
     </owl:Class>
     
@@ -482,14 +498,6 @@
     <!-- http://www.w3.org/2002/07/owl#Thing -->
 
     <owl:Class rdf:about="&owl;Thing"/>
-    
-
-
-    <!-- http://www.w3.org/2006/time#TemporalEntity -->
-
-    <owl:Class rdf:about="&time;TemporalEntity">
-        <rdfs:comment>Some measurement of time, either as a particular point in time or as some interval.</rdfs:comment>
-    </owl:Class>
     
 
 
@@ -506,7 +514,9 @@
 
     <!-- http://www.biosignalml.org/ontologies/2011/04/biosignalml#BP -->
 
-    <owl:NamedIndividual rdf:about="&biosignalml;BP"/>
+    <owl:NamedIndividual rdf:about="&biosignalml;BP">
+        <rdf:type rdf:resource="&biosignalml;Type"/>
+    </owl:NamedIndividual>
     
 
 
@@ -520,7 +530,9 @@
 
     <!-- http://www.biosignalml.org/ontologies/2011/04/biosignalml#ECG -->
 
-    <owl:NamedIndividual rdf:about="&biosignalml;ECG"/>
+    <owl:NamedIndividual rdf:about="&biosignalml;ECG">
+        <rdf:type rdf:resource="&biosignalml;Type"/>
+    </owl:NamedIndividual>
     
 
 
@@ -542,7 +554,9 @@
 
     <!-- http://www.biosignalml.org/ontologies/2011/04/biosignalml#EEG -->
 
-    <owl:NamedIndividual rdf:about="&biosignalml;EEG"/>
+    <owl:NamedIndividual rdf:about="&biosignalml;EEG">
+        <rdf:type rdf:resource="&biosignalml;Type"/>
+    </owl:NamedIndividual>
     
 
 
@@ -604,12 +618,11 @@
 
     <!-- http://www.biosignalml.org/ontologies/2011/04/biosignalml#example-notes -->
 
-    <owl:Thing rdf:about="&biosignalml;example-notes">
+    <owl:NamedIndividual rdf:about="&biosignalml;example-notes">
         <rdf:type rdf:resource="&biosignalml;Annotation"/>
-        <rdf:type rdf:resource="&owl;NamedIndividual"/>
         <rdfs:comment>A detailed description...</rdfs:comment>
         <dc:subject>An example.</dc:subject>
-    </owl:Thing>
+    </owl:NamedIndividual>
     
 
 
@@ -621,6 +634,23 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&biosignalml;BP_Filter"/>
+            <rdf:Description rdf:about="&biosignalml;HP_Filter"/>
+            <rdf:Description rdf:about="&biosignalml;LP_Filter"/>
+            <rdf:Description rdf:about="&biosignalml;Notch_Filter"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&biosignalml;BP"/>
+            <rdf:Description rdf:about="&biosignalml;ECG"/>
+            <rdf:Description rdf:about="&biosignalml;EEG"/>
+        </owl:distinctMembers>
+    </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
@@ -642,23 +672,6 @@
             <rdf:Description rdf:about="&biosignalml;SCP_ECG"/>
             <rdf:Description rdf:about="&biosignalml;WFDB"/>
         </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&biosignalml;BP"/>
-            <rdf:Description rdf:about="&biosignalml;ECG"/>
-            <rdf:Description rdf:about="&biosignalml;EEG"/>
-        </owl:distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&biosignalml;BP_Filter"/>
-            <rdf:Description rdf:about="&biosignalml;HP_Filter"/>
-            <rdf:Description rdf:about="&biosignalml;LP_Filter"/>
-            <rdf:Description rdf:about="&biosignalml;Notch_Filter"/>
-        </owl:members>
     </rdf:Description>
 </rdf:RDF>
 
