@@ -1,5 +1,4 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix tl: <http://purl.org/NET/c4dm/timeline.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -260,9 +259,6 @@ bsml:Type
 bsml:UnitOfMeasure
       rdf:type owl:Class ;
       rdfs:comment "The class used to represent the types of measurement units used by signals. We define sublasses for common measurement units; these may possibly be defined as being equivalent to entities in a specialised units of measure ontology (eg. http://www.foodinformatics.nl/om-qc-1.2.owl)." .
-
-owl:Thing
-      rdf:type owl:Class .
 
 bsml:TemporalEntity
       rdf:type owl:Class ;
