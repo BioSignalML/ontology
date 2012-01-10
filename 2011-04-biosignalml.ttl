@@ -10,10 +10,8 @@
 
 @prefix bsml: <http://www.biosignalml.org/ontologies/2011/04/biosignalml#> .
 
-@base <http://www.biosignalml.org/ontologies/2011/04/biosignalml#> .
 
-
-<> rdf:type owl:Ontology .
+bsml: rdf:type owl:Ontology .
 
 
 #################################################################
@@ -335,16 +333,17 @@ bsml:WFDB
 #
 #################################################################
 
-[] rdf:type owl:AllDisjointClasses ;
+[]
+  rdf:type owl:AllDisjointClasses ;
   owl:members ( bsml:Dataset
       bsml:Device
       bsml:Electrode
       bsml:Simulation
       bsml:Transducer
-      )
-  .
+      ) .
 
-[] rdf:type owl:AllDifferent ;
+[]
+  rdf:type owl:AllDifferent ;
   owl:distinctMembers ( bsml:BioSignalML
       bsml:EDF
       bsml:EDFplus
@@ -352,23 +351,19 @@ bsml:WFDB
       bsml:MFER
       bsml:SCP_ECG
       bsml:WFDB
-      )
-  .
+      ) .
 
-[] rdf:type owl:AllDisjointClasses ;
+[]
+  rdf:type owl:AllDisjointClasses ;
   owl:members ( bsml:BP_Filter
       bsml:HP_Filter
       bsml:LP_Filter
       bsml:Notch_Filter
-      )
-  .
+      ) .
 
-[] rdf:type owl:AllDifferent ;
+[]
+  rdf:type owl:AllDifferent ;
   owl:distinctMembers ( bsml:BP
       bsml:ECG
       bsml:EEG
-      )
-  .
-
-
-
+      ) .
