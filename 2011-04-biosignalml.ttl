@@ -1,8 +1,8 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @prefix tl: <http://purl.org/NET/c4dm/timeline.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
@@ -98,7 +98,7 @@ bsml:time
       owl:ObjectProperty ;
       rdfs:comment "Assigns a time Instant or Interval to an Event." ;
       rdfs:domain bsml:Event ;
-      rdfs:range time:TemporalEntity .
+      rdfs:range bsml:TemporalEntity .
 
 bsml:type
       rdf:type owl:FunctionalProperty ,
@@ -264,8 +264,9 @@ bsml:UnitOfMeasure
 owl:Thing
       rdf:type owl:Class .
 
-time:TemporalEntity
+bsml:TemporalEntity
       rdf:type owl:Class ;
+      owl:equivalentClass time:TemporalEntity ;
       rdfs:comment "Some measurement of time, either as a particular point in time or as some interval." .
 
 
