@@ -328,11 +328,6 @@ bsml:WFDB
       rdf:type bsml:Format ,
       owl:NamedIndividual .
 
-bsml:example-notes
-      rdf:type bsml:Annotation , owl:NamedIndividual , owl:Thing ;
-      rdfs:comment "A detailed description..." ;
-      dc:subject "An example." .
-
 
 #################################################################
 #
