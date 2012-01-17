@@ -33,13 +33,149 @@ dc:description rdf:type owl:AnnotationProperty .
 
 #################################################################
 #
+#    Classes
+#
+#################################################################
+
+bsml:Recording
+      rdf:type owl:Class ;
+      dc:description
+        """A collection of Signals that have been recorded simultaneously and kept together.""" ;
+      rdfs:comment
+        """Biosignal storage formats keep several individual signals together, usually as a single file,
+           although some formats have separate header and signal files. A Recording pertains to one thing
+           (the subject) and its signals are those recorded in a single data capture instance.
+           The signals may be all from the one device (e.g. a multi-lead ECG or EEG recording)
+           or may consist of channels from different devices (e.g. a polysomnography recording).""" ;
+      .
+
+bsml:Signal
+      rdf:type owl:Class ;
+      dc:description
+        """A sequence of periodic measurements of some quantity, ordered by some sampling
+           dimension, normally time. A Signal is part of some Recording.""" ;
+      rdfs:comment
+        """A Signal has a sequence of sample times and data points where the increasing sequence
+           of sample times may be thought of as a Sample Clock, with sample times being clock
+           ticks. A clock may be either uniform or irregular, and when uniform, its period is
+           often given as a rate or frequency (i.e. as the inverse of the period). The majority
+           of biosignals are sampled at a uniform rate.""" ;
+      .
+
+bsml:Event
+      rdf:type owl:Class ;
+      dc:description
+        """Something that has occurred in time, possibly for some duration.""" ;
+      rdfs:comment
+        """A sequence of Events all describing aspects of the same quality can be considered
+           to be a Signal.""" ;
+      .
+
+
+bsml:Annotation
+      rdf:type owl:Class ;
+      dc:description
+        """A general note, comment, or qualitative measure about the whole of,
+           or some portion of, a Recording, Signal or Event.""" .
+
+
+bsml:Clock
+      rdf:type owl:Class .
+
+
+
+bsml:Filter
+      rdf:type owl:Class ;
+      dc:description "The type of filter that has been applied to a signal as part of data collection." .
+
+bsml:BP_Filter
+      rdf:type owl:Class ;
+      rdfs:subClassOf bsml:Filter ;
+      dc:description "A band-pass filter." .
+
+bsml:HP_Filter
+      rdf:type owl:Class ;
+      rdfs:subClassOf bsml:Filter ;
+      dc:description "A high-pass filter." .
+
+bsml:LP_Filter
+      rdf:type owl:Class ;
+      rdfs:subClassOf bsml:Filter ;
+      dc:description "A low-pass filter." .
+
+bsml:Notch_Filter
+      rdf:type owl:Class ;
+      rdfs:subClassOf bsml:Filter ;
+      dc:description "A notch (blocking) filter." .
+
+
+
+bsml:Source
+      rdf:type owl:Class ;
+      dc:description "The source (ie. device, transducer, electrode, simulation, etc) of a Signal or Recording." .
+
+bsml:Dataset
+      rdf:type owl:Class ;
+      rdfs:subClassOf bsml:Source ;
+      dc:description "A collection of data files or web services that contain Recording or Signal information." .
+
+bsml:Simulation
+      rdf:type owl:Class ;
+      rdfs:subClassOf bsml:Source ;
+      dc:description "A computer simulation or modelling process that created the Signal or Recording." .
+
+bsml:Device
+      rdf:type owl:Class ;
+      rdfs:subClassOf bsml:Source ;
+      dc:description "The physical device that saved the output of a sensor into a format able to be stored." .
+
+
+bsml:Sensor
+      rdf:type owl:Class ;
+      dc:description "What actually captured a signal -- an electrode, sensor, etc." ;
+      rdfs:subClassOf owl:Thing .
+
+bsml:Transducer
+      rdf:type owl:Class ;
+      rdfs:subClassOf bsml:Sensor .
+
+bsml:Electrode
+      rdf:type owl:Class ;
+      rdfs:subClassOf bsml:Sensor .
+
+
+
+bsml:Format
+      rdf:type owl:Class ;
+      dc:description "The particular storage format used to encode a Recording." .
+
+bsml:Type
+      rdf:type owl:Class ;
+      dc:description "The class or type of signal (e.g. EEG, ECG)." .
+
+
+bsml:TemporalEntity
+      rdf:type owl:Class ;
+      owl:equivalentClass time:TemporalEntity ;
+      dc:description "Some measurement of time, either as a particular point in time or as some interval." .
+
+
+bsml:UnitOfMeasure
+      rdf:type owl:Class ;
+      dc:description """The class used to represent the types of measurement units used by signals.
+We define sublasses for common measurement units; these may possibly be defined as being
+equivalent to entities in a specialised units of measure ontology.""" .
+
+
+#################################################################
+#
 #    Object Properties
 #
 #################################################################
 
 bsml:annotation
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:comment "What can be annotated? And do all annotations have to be instances of the Annotation class? What about free-form text??" ;
+      dc:description "What can be annotated? And do all annotations have to be instances of the Annotation class? What about free-form text??" ;
       rdfs:range bsml:Annotation .
 
 bsml:clock
@@ -47,57 +183,53 @@ bsml:clock
       rdfs:range bsml:Clock ;
       rdfs:domain bsml:Signal .
 
-bsml:database
-      rdf:type owl:ObjectProperty .
 
 bsml:filter
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       rdfs:range bsml:Filter ;
       rdfs:domain bsml:Signal .
 
-bsml:format
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:range bsml:Format ;
-      rdfs:domain bsml:Recording .
-
 bsml:recording
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:comment "The Recording a Signal is part of." ;
+      dc:description "The Recording a Signal is part of." ;
       rdfs:range bsml:Recording ;
       rdfs:domain bsml:Signal .
 
-bsml:repository
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:comment "The Repository a Collection, Database or Recording is part of." ;
-      rdfs:domain bsml:Recording ;
-      rdfs:range bsml:Repository .
 
 bsml:resolution
       rdf:type owl:ObjectProperty ;
       rdfs:domain bsml:Signal .
 
+bsml:signal
+      rdf:type owl:ObjectProperty ;
+      dc:description "Assigns a Signal to an annotation." ;
+      rdfs:domain bsml:Annotation ;
+      rdfs:range bsml:Signal .
+
+
 bsml:sensor
       rdf:type owl:ObjectProperty ;
       rdfs:range bsml:Sensor .
 
-bsml:signal
-      rdf:type owl:ObjectProperty ;
-      rdfs:comment "Assigns a Signal to an annotation." ;
-      rdfs:domain bsml:Annotation ;
-      rdfs:range bsml:Signal .
-
 bsml:source
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:comment "The source of a Signal or Recording." ;
+      dc:description "The source of a Signal or Recording." ;
       owl:deprecated "Use dc:source instead." ;
       rdfs:range bsml:Source .
+
 
 bsml:time
       rdf:type owl:FunctionalProperty ,
       owl:ObjectProperty ;
-      rdfs:comment "Assigns a time Instant or Interval to an Event." ;
+      dc:description "Assigns a time Instant or Interval to an Event." ;
       rdfs:domain bsml:Event ;
       rdfs:range bsml:TemporalEntity .
+
+
+bsml:format
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      rdfs:range bsml:Format ;
+      rdfs:domain bsml:Recording .
 
 bsml:type
       rdf:type owl:FunctionalProperty ,
@@ -107,7 +239,7 @@ bsml:type
 
 bsml:units
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:comment "The physical units that are represented by a signal's data values." ;
+      dc:description "The physical units that are represented by a signal's data values." ;
       rdfs:domain bsml:Signal ;
       rdfs:range bsml:UnitOfMeasure .
 
@@ -118,152 +250,43 @@ bsml:units
 #
 #################################################################
 
-bsml:maxFrequency
+bsml:minFrequency
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      rdfs:comment "The maximum frequency, in Hertz, contained in the signal." ;
+      dc:description "The minimum frequency, in Hertz, contained in the signal." ;
       rdfs:domain bsml:Signal ;
       rdfs:range xsd:double .
+
+bsml:maxFrequency
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      dc:description "The maximum frequency, in Hertz, contained in the signal." ;
+      rdfs:domain bsml:Signal ;
+      rdfs:range xsd:double .
+
 
 bsml:maxValue
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      rdfs:comment "The maximum value of the signal." ;
-      rdfs:domain bsml:Signal ;
-      rdfs:range xsd:double .
-
-bsml:minFrequency
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      rdfs:comment "The minimum frequency, in Hertz, contained in the signal." ;
+      dc:description "The maximum value of the signal." ;
       rdfs:domain bsml:Signal ;
       rdfs:range xsd:double .
 
 bsml:minValue
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      rdfs:comment "The minimum value of the signal." ;
+      dc:description "The minimum value of the signal." ;
       rdfs:domain bsml:Signal ;
       rdfs:range xsd:double .
 
+
 bsml:period
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      rdfs:comment "The period, in seconds, of a uniform clock's ticks." ;
+      dc:description "The period, in seconds, of a uniform clock's ticks." ;
       rdfs:domain bsml:Clock ;
       rdfs:range xsd:double .
 
 bsml:rate
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      rdfs:comment "The rate, in Hertz, a uniform clock is ticking." ;
+      dc:description "The rate, in Hertz, a uniform clock is ticking." ;
       rdfs:domain bsml:Clock ;
       rdfs:range xsd:double .
-
-
-#################################################################
-#
-#    Classes
-#
-#################################################################
-
-bsml:Annotation
-      rdf:type owl:Class ;
-      rdfs:comment "A qualitative value (e.g. text comment) with an associated time, whose values re-occur frequently in a Recording." .
-
-bsml:BP_Filter
-      rdf:type owl:Class ;
-      rdfs:subClassOf bsml:Filter ;
-      rdfs:comment "A band-pass filter." .
-
-bsml:Clock
-      rdf:type owl:Class .
-
-bsml:Collection
-      rdf:type owl:Class ;
-      rdfs:comment "A group of Databases all relating to a common type of signal (e.g. ECG)." .
-
-bsml:Database
-      rdf:type owl:Class ;
-      rdfs:comment "A collection of Recordings all pertaining to a particular study or research project." .
-
-bsml:Dataset
-      rdf:type owl:Class ;
-      rdfs:subClassOf bsml:Source ;
-      rdfs:comment "A collection of data files or web services that contain Recording or Signal information." .
-
-bsml:Device
-      rdf:type owl:Class ;
-      rdfs:subClassOf bsml:Source ;
-      rdfs:comment "The physical device that saved the output of a transducer into a format able to be stored." .
-
-bsml:Electrode
-      rdf:type owl:Class ;
-      rdfs:subClassOf bsml:Sensor .
-
-bsml:Event
-      rdf:type owl:Class ;
-      rdfs:comment "Something that occassionally happens in time, usually for a duration (e.g. an obstrcutive sleep apnea)." .
-
-bsml:Filter
-      rdf:type owl:Class ;
-      rdfs:comment "The type of filter that has been applied to a signal as part of data collection." .
-
-bsml:Format
-      rdf:type owl:Class ;
-      rdfs:comment "The particular storage format used to encode a Recording." .
-
-bsml:HP_Filter
-      rdf:type owl:Class ;
-      rdfs:subClassOf bsml:Filter ;
-      rdfs:comment "A high-pass filter." .
-
-bsml:LP_Filter
-      rdf:type owl:Class ;
-      rdfs:subClassOf bsml:Filter ;
-      rdfs:comment "A low-pass filter." .
-
-bsml:Notch_Filter
-      rdf:type owl:Class ;
-      rdfs:subClassOf bsml:Filter ;
-      rdfs:comment "A notch (blocking) filter." .
-
-bsml:Recording
-      rdf:type owl:Class ;
-      rdfs:comment "A set of Signals, Annotations and Events that have been recorded together. Storage formats usually keep these multiple components in a single file (e.g. EDF+) or in a group of files held in the same directory (e.g. WFDB)." .
-
-bsml:Repository
-      rdf:type owl:Class ;
-      rdfs:comment "A container for Collections, Databases and Recordings." .
-
-bsml:Sensor
-      rdf:type owl:Class ;
-      rdfs:subClassOf owl:Thing .
-
-bsml:Signal
-      rdf:type owl:Class ;
-      rdfs:comment "A set of time-varying values of some measurable quantity. Physiological signals are usually oversampled with a uniform sampling period." .
-
-bsml:Simulation
-      rdf:type owl:Class ;
-      rdfs:subClassOf bsml:Source ;
-      rdfs:comment "A computer simulation or modelling process that created the Signal or Recording." .
-
-bsml:Source
-      rdf:type owl:Class ;
-      rdfs:comment "The source (ie. device, transducer, electrode, simulation, etc) of a Signal or Recording." .
-
-bsml:Transducer
-      rdf:type owl:Class ;
-      rdfs:subClassOf bsml:Sensor ;
-      rdfs:comment "What actually captured a signal -- an electrode, sensor, etc." .
-
-bsml:Type
-      rdf:type owl:Class ;
-      rdfs:comment "The class or type of signal (e.g. EEG, ECG)." .
-
-bsml:UnitOfMeasure
-      rdf:type owl:Class ;
-      rdfs:comment "The class used to represent the types of measurement units used by signals. We define sublasses for common measurement units; these may possibly be defined as being equivalent to entities in a specialised units of measure ontology (eg. http://www.foodinformatics.nl/om-qc-1.2.owl)." .
-
-bsml:TemporalEntity
-      rdf:type owl:Class ;
-      owl:equivalentClass time:TemporalEntity ;
-      rdfs:comment "Some measurement of time, either as a particular point in time or as some interval." .
 
 
 #################################################################
@@ -272,56 +295,46 @@ bsml:TemporalEntity
 #
 #################################################################
 
-bsml:BP
-      rdf:type bsml:Type ,
-      owl:NamedIndividual .
-
 bsml:BioSignalML
-      rdf:type bsml:Format ,
-      owl:NamedIndividual .
-
-bsml:ECG
-      rdf:type bsml:Type ,
-      owl:NamedIndividual .
+      rdf:type bsml:Format , owl:NamedIndividual .
 
 bsml:EDF
-      rdf:type bsml:Format ,
-      owl:NamedIndividual .
+      rdf:type bsml:Format , owl:NamedIndividual .
 
 bsml:EDFplus
-      rdf:type bsml:Format ,
-      owl:NamedIndividual .
-
-bsml:EEG
-      rdf:type bsml:Type ,
-      owl:NamedIndividual .
+      rdf:type bsml:Format , owl:NamedIndividual .
 
 bsml:FieldML
-      rdf:type bsml:Format ,
-      owl:NamedIndividual .
+      rdf:type bsml:Format , owl:NamedIndividual .
 
 bsml:MFER
-      rdf:type bsml:Format ,
-      owl:NamedIndividual .
+      rdf:type bsml:Format , owl:NamedIndividual .
 
 bsml:RAW
-      rdf:type bsml:Format ,
-      owl:NamedIndividual .
+      rdf:type bsml:Format , owl:NamedIndividual .
 
 bsml:SCP_ECG
-      rdf:type bsml:Format ,
-      owl:NamedIndividual .
+      rdf:type bsml:Format , owl:NamedIndividual .
 
 bsml:SDF
-      rdf:type bsml:Format ,
-      owl:NamedIndividual .
+      rdf:type bsml:Format , owl:NamedIndividual .
 
 bsml:SignalStream
       rdf:type bsml:Format , owl:NamedIndividual .
 
 bsml:WFDB
-      rdf:type bsml:Format ,
-      owl:NamedIndividual .
+      rdf:type bsml:Format , owl:NamedIndividual .
+
+
+bsml:BP
+      rdfs:label "Blood Pressure" ;
+      rdf:type bsml:Type , owl:NamedIndividual .
+
+bsml:ECG
+      rdf:type bsml:Type , owl:NamedIndividual .
+
+bsml:EEG
+      rdf:type bsml:Type , owl:NamedIndividual .
 
 
 #################################################################
@@ -332,7 +345,8 @@ bsml:WFDB
 
 []
   rdf:type owl:AllDisjointClasses ;
-  owl:members ( bsml:Dataset
+  owl:members (
+      bsml:Dataset
       bsml:Device
       bsml:Electrode
       bsml:Simulation
@@ -340,8 +354,19 @@ bsml:WFDB
       ) .
 
 []
+  rdf:type owl:AllDisjointClasses ;
+  owl:members (
+      bsml:BP_Filter
+      bsml:HP_Filter
+      bsml:LP_Filter
+      bsml:Notch_Filter
+      ) .
+
+
+[]
   rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( bsml:BioSignalML
+  owl:distinctMembers (
+      bsml:BioSignalML
       bsml:EDF
       bsml:EDFplus
       bsml:FieldML
@@ -351,16 +376,9 @@ bsml:WFDB
       ) .
 
 []
-  rdf:type owl:AllDisjointClasses ;
-  owl:members ( bsml:BP_Filter
-      bsml:HP_Filter
-      bsml:LP_Filter
-      bsml:Notch_Filter
-      ) .
-
-[]
   rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( bsml:BP
+  owl:distinctMembers (
+      bsml:BP
       bsml:ECG
       bsml:EEG
       ) .
