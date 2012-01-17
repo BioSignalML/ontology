@@ -79,14 +79,16 @@ bsml:Annotation
            or some portion of, a Recording, Signal or Event.""" .
 
 
-bsml:Clock
+bsml:UniformSignal
+      rdfs:subClassOf bsml:Signal ;
+      dc:description """A signal that has been sampled at a constant rate.""" ;
       rdf:type owl:Class .
 
 
 
 bsml:Filter
       rdf:type owl:Class ;
-      dc:description "The type of filter that has been applied to a signal as part of data collection." .
+      dc:description "The class of filter that has been applied to a signal during data collection." .
 
 bsml:BP_Filter
       rdf:type owl:Class ;
@@ -112,7 +114,7 @@ bsml:Notch_Filter
 
 bsml:Source
       rdf:type owl:Class ;
-      dc:description "The source (ie. device, transducer, electrode, simulation, etc) of a Signal or Recording." .
+      dc:description "The source (i.e. file, device, simulation, etc) of a Signal or Recording." .
 
 bsml:Dataset
       rdf:type owl:Class ;
@@ -131,25 +133,33 @@ bsml:Device
 
 
 bsml:Sensor
-      rdf:type owl:Class ;
-      dc:description "What actually captured a signal -- an electrode, sensor, etc." ;
-      rdfs:subClassOf owl:Thing .
+      dc:description "What actually captured a signal -- an electrode, transducer, etc." ;
+      rdf:type owl:Class .
 
 bsml:Transducer
       rdf:type owl:Class ;
-      rdfs:subClassOf bsml:Sensor .
+      rdfs:subClassOf bsml:Sensor ;
+      dc:description
+        """A device that converts a measurable quantity into an electrical signal
+           (e.g. thermistor, pressure sensor, strain gauge).""" ;
+      rdfs:seeAlso <http://en.wikipedia.org/wiki/Transducer> .
 
 bsml:Electrode
       rdf:type owl:Class ;
+      rdfs:subClassOf bsml:Sensor ;
+      dc:description
+         """An electrical conductor in contact with non-conducting material, through which
+            electrical activity can be measured."""  ;
       rdfs:subClassOf bsml:Sensor .
 
 
 
 bsml:Format
       rdf:type owl:Class ;
-      dc:description "The particular storage format used to encode a Recording." .
+      dc:description
+        """The particular storage format used to encode a Recording (e.g. EDF+, WFDB, SCP-ECG, MFER).""" .
 
-bsml:Type
+bsml:SignalType
       rdf:type owl:Class ;
       dc:description "The class or type of signal (e.g. EEG, ECG)." .
 
@@ -162,10 +172,11 @@ bsml:TemporalEntity
 
 bsml:UnitOfMeasure
       rdf:type owl:Class ;
-      dc:description """The class used to represent the types of measurement units used by signals.
-We define sublasses for common measurement units; these may possibly be defined as being
-equivalent to entities in a specialised units of measure ontology.""" .
-
+      dc:description "The class used to represent the types of measurement units used by signals." ;
+      rdfs:comment
+        """Measurement units would normally be entities in a specialised units of measure ontology.""" ;
+      rdfs:seeAlso <http://www.sbpax.org/uome/list.html> ;
+      .
 
 #################################################################
 #
@@ -173,73 +184,54 @@ equivalent to entities in a specialised units of measure ontology.""" .
 #
 #################################################################
 
-bsml:annotation
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      dc:description "What can be annotated? And do all annotations have to be instances of the Annotation class? What about free-form text??" ;
-      rdfs:range bsml:Annotation .
 
-bsml:clock
+bsml:preFilter
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:range bsml:Clock ;
-      rdfs:domain bsml:Signal .
-
-
-bsml:filter
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:range bsml:Filter ;
-      rdfs:domain bsml:Signal .
+      dc:description "Pre-filtering applied to a signal as part of collection." ;
+      rdfs:domain bsml:Signal ;
+      rdfs:range bsml:Filter .
 
 bsml:recording
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       dc:description "The Recording a Signal is part of." ;
-      rdfs:range bsml:Recording ;
-      rdfs:domain bsml:Signal .
-
-
-bsml:resolution
-      rdf:type owl:ObjectProperty ;
-      rdfs:domain bsml:Signal .
-
-bsml:signal
-      rdf:type owl:ObjectProperty ;
-      dc:description "Assigns a Signal to an annotation." ;
-      rdfs:domain bsml:Annotation ;
-      rdfs:range bsml:Signal .
+      rdfs:domain bsml:Signal ;
+      rdfs:range bsml:Recording .
 
 
 bsml:sensor
       rdf:type owl:ObjectProperty ;
+      dc:description "What was used to collect or derive an electrical signal" ;
+      rdfs:domain bsml:Signal ;
       rdfs:range bsml:Sensor .
 
 bsml:source
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      dc:description "The source of a Signal or Recording." ;
-      owl:deprecated "Use dc:source instead." ;
+      dc:description "The source of a Recording or Signal." ;
+      rdfs:subPropertyOf dc:source ;
+      rdfs:domain [
+        a owl:Class ;
+        owl:unionOf (bsml:Recording bsml:Signal) ;
+        ] ;
       rdfs:range bsml:Source .
-
-
-bsml:time
-      rdf:type owl:FunctionalProperty ,
-      owl:ObjectProperty ;
-      dc:description "Assigns a time Instant or Interval to an Event." ;
-      rdfs:domain bsml:Event ;
-      rdfs:range bsml:TemporalEntity .
 
 
 bsml:format
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:range bsml:Format ;
-      rdfs:domain bsml:Recording .
+      rdfs:subPropertyOf dc:format ;
+      dc:description "The format used to hold the recording." ;
+      rdfs:domain bsml:Recording ;
+      rdfs:range bsml:Format .
 
-bsml:type
-      rdf:type owl:FunctionalProperty ,
-      owl:ObjectProperty ;
+bsml:signalType
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      dc:description "A signal's generic type." ;
       rdfs:domain bsml:Signal ;
-      rdfs:range bsml:Type .
+      rdfs:range bsml:SignalType .
 
 bsml:units
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       dc:description "The physical units that are represented by a signal's data values." ;
+      rdfs:comment "Specification of units allows for consistency checking and automatic conversion" ;
       rdfs:domain bsml:Signal ;
       rdfs:range bsml:UnitOfMeasure .
 
@@ -271,21 +263,21 @@ bsml:maxValue
 
 bsml:minValue
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dc:description "The minimum value of the signal." ;
+      dc:description "The minimum value of the signals data value." ;
       rdfs:domain bsml:Signal ;
       rdfs:range xsd:double .
 
 
 bsml:period
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dc:description "The period, in seconds, of a uniform clock's ticks." ;
-      rdfs:domain bsml:Clock ;
+      dc:description "The sampling period, in seconds, of a uniformly sampled signal." ;
+      rdfs:domain bsml:UniformSignal ;
       rdfs:range xsd:double .
 
 bsml:rate
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dc:description "The rate, in Hertz, a uniform clock is ticking." ;
-      rdfs:domain bsml:Clock ;
+      dc:description "The sampling rate, in Hertz, of a uniformly sampled signal." ;
+      rdfs:domain bsml:UniformSignal ;
       rdfs:range xsd:double .
 
 
@@ -295,45 +287,53 @@ bsml:rate
 #
 #################################################################
 
-bsml:BioSignalML
-      rdf:type bsml:Format , owl:NamedIndividual .
-
 bsml:EDF
+      dc:title "European Data Format" ;
       rdf:type bsml:Format , owl:NamedIndividual .
 
 bsml:EDFplus
+      dc:title "European Data Format +" ;
+      rdf:type bsml:Format , owl:NamedIndividual .
+
+bsml:MFER
+      dc:title "Medical Format Encoding Rules" ;
+      rdf:type bsml:Format , owl:NamedIndividual .
+
+bsml:RAW
+      dc:description "Raw, binary data with unknown format." ;
+      rdf:type bsml:Format , owl:NamedIndividual .
+
+bsml:SCP_ECG
+      dc:title "Standard Communications Protocol for ECG" ;
+      rdf:type bsml:Format , owl:NamedIndividual .
+
+bsml:SDF
+      dc:title "Stanford Data Format" ;
+      rdf:type bsml:Format , owl:NamedIndividual .
+
+bsml:WFDB
+      dc:title "WaveForm DataBase" ;
+      rdf:type bsml:Format , owl:NamedIndividual .
+
+
+bsml:BioSignalML
       rdf:type bsml:Format , owl:NamedIndividual .
 
 bsml:FieldML
       rdf:type bsml:Format , owl:NamedIndividual .
 
-bsml:MFER
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-bsml:RAW
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-bsml:SCP_ECG
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-bsml:SDF
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-bsml:SignalStream
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-bsml:WFDB
-      rdf:type bsml:Format , owl:NamedIndividual .
 
 
 bsml:BP
-      rdfs:label "Blood Pressure" ;
+      dc:title "Blood Pressure" ;
       rdf:type bsml:Type , owl:NamedIndividual .
 
 bsml:ECG
+      dc:title "Electrocardiogram" ;
       rdf:type bsml:Type , owl:NamedIndividual .
 
 bsml:EEG
+      dc:title "Electroencephalogram" ;
       rdf:type bsml:Type , owl:NamedIndividual .
 
 
