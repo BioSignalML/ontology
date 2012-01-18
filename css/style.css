@@ -6,6 +6,13 @@ body {
   text-align: justify;
   }
 
+@media only print {
+ body {
+   padding: 0 ;
+   margin: 0 ;
+   }
+ }
+
 .termdetails {
   }
 
