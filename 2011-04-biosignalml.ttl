@@ -326,15 +326,15 @@ bsml:FieldML
 
 bsml:BP
       dc:title "Blood Pressure" ;
-      rdf:type bsml:Type , owl:NamedIndividual .
+      rdf:type bsml:SignalType , owl:NamedIndividual .
 
 bsml:ECG
       dc:title "Electrocardiogram" ;
-      rdf:type bsml:Type , owl:NamedIndividual .
+      rdf:type bsml:SignalType , owl:NamedIndividual .
 
 bsml:EEG
       dc:title "Electroencephalogram" ;
-      rdf:type bsml:Type , owl:NamedIndividual .
+      rdf:type bsml:SignalType , owl:NamedIndividual .
 
 
 #################################################################
