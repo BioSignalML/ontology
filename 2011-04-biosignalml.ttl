@@ -48,6 +48,7 @@ bsml:Signal
       dc:description
         """A sequence of periodic measurements of some quantity, ordered by some sampling
            dimension, normally time. A Signal is part of some Recording.""" ;
+      .
 
 bsml:Event
       rdf:type owl:Class ;
