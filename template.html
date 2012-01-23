@@ -55,7 +55,7 @@
      (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120123.ttl">Turtle</a>)
     </dd>
     <dt>Latest version:</dt><dd>
-     <a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml#">http://www.biosignalml.org/ontologies/2011/04/biosignalml#</a>
+     <a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml.html">http://www.biosignalml.org/ontologies/2011/04/biosignalml.html</a>
      (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml.rdf">RDF/XML</a>)
      (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml.ttl">TURTLE</a>)
     </dd>
@@ -106,104 +106,115 @@
     them to the authors. Thank you.
   </p>
 
-<h2 id="contents">Table of Contents</h2>
-<ol id="toc">
- <li><a href="#intro">Introduction</a>
-<!--
-  <ol>
-   <li><a href="#s11">X</a></li>
-   <li><a href="#s12">Y</a></li>
-   <li>
-    <a href="#s13">Z</a>
-    <ol>
-     <li><a href="#s131">K</a></li>
-     <li><a href="#s132">M</a></li>
-    </ol>
-   </li>
+  <h2 id="contents">Table of Contents</h2>
+  <ol id="toc">
+   <li><a href="#intro">Introduction</a></li>
+   <li><a href="#model">BioSignalML Model</a></li>
+   <li><a href="#glance">BioSignalML ontology at a glance</a></li>
+   <li><a href="#reference">Cross-reference for BioSignalML classes and properties</a></li>
   </ol>
--->
- </li>
 
- <li><a href="#glance">BioSignalML ontology at a glance</a></li>
- <li>
-  <a href="#overview">BioSignalML ontology overview</a>
-  <ol>
-   <li><a href="#s31">Example</a></li>
+  <h3>Appendices</h3>
+  <ol id="appendix">
+   <li><a href="#references">References</a></li>
+   <li><a href="#changes">Changes in this version</a> (Non-Normative)</li>
+   <li><a href="#acknowledgements">Acknowledgements</a> (Non-Normative)</li>
   </ol>
- </li>
- <li><a href="#reference">Cross-reference for BioSignalML classes and properties</a></li>
-</ol>
 
-<h3>Appendices</h3>
-<ol id="appendix">
- <li><a href="#references">References</a></li>
- <li><a href="#changes">Changes in this version</a> (Non-Normative)</li>
- <li><a href="#acknowledgements">Acknowledgements</a> (Non-Normative)</li>
-</ol>
+  <hr />
+ 
+ <div class="body">
 
-<hr />
-
-<div class="body">
-
- <div class="div1">
-  <h2 id="intro">1 Introduction</h2>
- </div>
-<!--
- <div class="div2">
-  <h2 id="s11">1.1 X</h2>
- </div>
-
- <div class="div2">
-  <h2 id="s12">1.2 Y</h2>
- </div>
-
- <div class="div2">
-  <h2 id="s13">1.3 Z</h2>
-
-  <div class="div3">
-   <h3 id="s131">1.3.1 K</h3>
+  <div id="intro">
+   <h2>Introduction</h2>
   </div>
 
-  <div class="div3">
-   <h3 id="s132">1.3.2 M</h3>
+  <hr />
+
+  <div id="model">
+   <h2>The BioSignalML Model</h2>
+   <p>
+    This ontology defines concepts to describe the storage and exchange of biosignals,
+    regardless of their underlying file format.
+   </p>
+
+   <p>
+    A <b>Recording</b> contains several individual signals all of which have
+    been recorded together. Signals in a recording may be all from the one device (e.g. a multi-lead
+    ECG or EEG recording) or may be from different devices (e.g. a polysomnography recording).
+    Core attributes of Recordings are:
+   </p>
+   <dl>
+    <dt>subject</dt><dd>Who or what is the subject of investigation.</dd>
+    <dt>investigator</dt><dd>Who made the recording.</dd>
+    <dt>starttime</dt><dd>When the recording began.</dd>
+    <dt>duration</dt><dd>The length of the recording.</dd>
+   </dl>
+
+   <p>
+    A <b>Signal</b> consists of a sequence of data points in some sampling dimension, usually time. Samples
+    may be uniformly spaced or irregular; the majority of biosignals are sampled at a uniform rate.
+    Core attributes are:
+   </p>
+   <dl>
+    <dt>label</dt><dd>A descriptive label.</dd>
+    <dt>units</dt><dd>The physical units of the quantity measured.</dd>
+    <dt>sensor</dt><dd>The transducer or electrode used to capture the signal.</dd>
+    <dt>filter</dt><dd>Details of filtering applied prior to sampling.</dd>
+    <dt>rate</dt><dd>The sampling frequency.</dd>
+    <dt>times</dt><dd>An increasing sequence of sampling times.</dd>
+   </dl>
+
+   <p>
+    An <b>Event</b> is something that has occurred in time, possibly for some duration. Sequences
+    of events, all describing aspects of the same quality, can be seen as a signal. Core attributes
+    of Events are:
+   </p>
+   <dl>
+    <dt>kind</dt><dd>What the event represents.</dd>
+    <dt>time</dt><dd>When the event occurred.</dd>
+    <dt>duration</dt><dd>The length of the event.</dd>
+   </dl>
+
+   <p>
+    <b>Annotations</b> are general notes, comments, or description of some qualitative measure,
+     and may be made about the whole, or some portion, of a Recording, Signal or Event.
+   </p>
+
+   <p>
+    Other ontologies, besides this one, are used for some of the attributes above when realising
+    the <em>BioSignalML Model</em>, in particular those from the DCMI Metadata Terms, OWL-Time, and
+    the TimeLine Ontology.
+   </p>
+
   </div>
--->
- </div>
 
- <div class="glance">
-  <h2 id="glance">2. BioSignalML ontology at a glance</h2>
+  <hr />
 
-  <p>An alphabetical index of BioSignalML terms, by class (concepts) and by property 
-  (relationships, attributes), are given below. All the terms are hyperlinked 
-  to their detailed description for quick reference.</p>
+  <div id="glance">
+   <h2>BioSignalML ontology at a glance</h2>
+
+   <p>
+    An alphabetical index of BioSignalML terms, by class (concepts) and by property 
+    (relationships, attributes), are given below. All the terms are hyperlinked 
+    to their detailed description for quick reference.</p>
 
 <!-- The list of classes and properties goes here -->
 %(index)s
 <!-- End of the terms list -->
- </div>
+  </div>
 
- <h2 id="overview">3. BioSignalML ontology overview</h2>
+  <hr />
 
- <p>The BioSignalML definitions presented here are ...</p>
-
- <h3 id="s31">3.1. Example</h3>
-<!--
- <p>Here is a very basic document describing a foo:</p>
-
- <div class="example" style="white-space: pre-wrap;">
-  <pre>
-   &lt;rdf:RDF /&gt;
-  </pre>
- </div>
--->
-
-
- <h2 id="reference">4. Cross-reference of BioSignalML classes and properties</h2>
+  <div id="reference">
+   <h2>Cross-reference of BioSignalML classes and properties</h2>
 
 <!-- The following is the script-generated list of classes and properties -->
 %(terms)s
 <!-- End of the terms list -->
+  </div>
 
+ </div>
 
  <div class="back">
   <div class="div1">

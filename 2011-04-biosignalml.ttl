@@ -41,12 +41,6 @@ bsml:Recording
       rdf:type owl:Class ;
       dc:description
         """A collection of Signals that have been recorded simultaneously and kept together.""" ;
-      rdfs:comment
-        """Biosignal storage formats keep several individual signals together, usually as a single file,
-           although some formats have separate header and signal files. A Recording pertains to one thing
-           (the subject) and its signals are those recorded in a single data capture instance.
-           The signals may be all from the one device (e.g. a multi-lead ECG or EEG recording)
-           or may consist of channels from different devices (e.g. a polysomnography recording).""" ;
       .
 
 bsml:Signal
@@ -54,21 +48,11 @@ bsml:Signal
       dc:description
         """A sequence of periodic measurements of some quantity, ordered by some sampling
            dimension, normally time. A Signal is part of some Recording.""" ;
-      rdfs:comment
-        """A Signal has a sequence of sample times and data points where the increasing sequence
-           of sample times may be thought of as a Sample Clock, with sample times being clock
-           ticks. A clock may be either uniform or irregular, and when uniform, its period is
-           often given as a rate or frequency (i.e. as the inverse of the period). The majority
-           of biosignals are sampled at a uniform rate.""" ;
-      .
 
 bsml:Event
       rdf:type owl:Class ;
       dc:description
         """Something that has occurred in time, possibly for some duration.""" ;
-      rdfs:comment
-        """A sequence of Events all describing aspects of the same quality can be considered
-           to be a Signal.""" ;
       .
 
 

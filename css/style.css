@@ -127,3 +127,24 @@ h2.specgroup {
   padding: 10px ;
   background-color: #fbb ;
   }
+
+#model p {
+  margin-bottom: 0 ;
+  }
+
+#model dl {
+  margin-top: 0 ;
+  overflow: hidden ;
+  }
+
+#model dt, #model dd {
+  display: block ;
+  float: left ;
+  margin-top: 5px ;
+  }
+
+#model dt {
+  margin-left: 10px ;
+  width: 60px ;
+  clear: both ;
+  }
