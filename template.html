@@ -16,12 +16,8 @@
  <head>
   <title about="http://www.biosignalml.org/ontologies/2011/04/biosignalml.html"
          property="dc:title">BioSignalML: An ontology for working with biosignals</title>
-
   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
-
 <!--  <base href="http://www.biosignalml.org/ontologies/2011/04/biosignalml.html" /> -->
-
-
   <meta about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#"
         typeof="owl:Ontology" rel="dc:creator" content="David Brooks" />
   <meta about="http://www.biosignalml.org/ontologies/2011/04/biosignalml.html"
@@ -36,57 +32,61 @@
   <link about="http://www.biosignalml.org/ontologies/2011/04/biosignalml.html"
         href="http://www.biosignalml.org/ontologies/2011/04/biosignalml.ttl"
         rel="alternate dcterms:hasFormat"  type="text/turtle" />
-
   <link rel="stylesheet" type="text/css" href="css/xmlns-style.css" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
-
  </head>
 
  <body>
 
   <div class="head">
-
    <a href="http://www.biosignalml.org/">
-    <img src="/images/biosignalml.png"
-         alt="BioSignalML" width="153" height="74" id="logo"/>
+    <img src="/images/biosignalml.png" alt="BioSignalML logo" width="153" height="74" style="float: right"/>
    </a>
-
-   <h1 id="title">BioSignalML Ontology</h1>
-
-   <h2 id="subtitle">An ontology for working with biosignals</h2>
-
-   <h2 id="mymw-doctype">Working Draft - 31 August 2011</h2>
-
+   <h1 about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="dc:title">The BioSignalML Ontology</h1>
+   <h2>An ontology for working with biosignals</h2>
+   <h2>Version <span about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="owl:versionInfo" datatype="xsd:decimal">0.90</span>
+             - <span about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="dc:date"
+                     content="20102-01-23T16:46:00+13:00" datatype="xsd:dateTime">23 January 2012</span></h2>
    <dl>
-    <dt>This version:</dt>
-    <dd>
-     <a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20110831">http://www.biosignalml.org/ontologies/2011/04/biosignalml-20110831</a>
-     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20110831.rdf">rdf</a>)
+    <dt>This version:</dt><dd>
+	 <a rel="dc:hasVersion" rev="dc:isVersionOf"
+     <a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120123.html">http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120123.html</a>
+     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120123.rdf">RDF/XML</a>)
+     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120123.ttl">Turtle</a>)
     </dd>
-    <dt>Latest version:</dt>
-    <dd>
-     <a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml">http://www.biosignalml.org/ontologies/2011/04/biosignalml</a>
-     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml.rdf">RDF</a>)
+    <dt>Latest version:</dt><dd>
+     <a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml#">http://www.biosignalml.org/ontologies/2011/04/biosignalml#</a>
+     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml.rdf">RDF/XML</a>)
+     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml.ttl">TURTLE</a>)
     </dd>
-    <dt>Last Update:</dt>
-    <dd>Date: 31 August 2011</dd>
-    <dt>Editors:</dt>
-    <dd>David Brooks, Auckland Bioengineering Institute</dd>
-    <dt>Acknowledgements:</dt>
-    <dd>See <a href="#acknowledgments">acknowledgements</a></dd>
+    <dt>Last Update:</dt><dd>Date: 23 January 2012</dd>
+    <dt>Editors:</dt><dd>David Brooks, Auckland Bioengineering Institute</dd>
+    <dt>Acknowledgements:</dt><dd>See <a href="#acknowledgments">acknowledgements</a></dd>
    </dl>
 
+
+   <div about="http://purl.org/ontology/olo/orderedlistontology.html" rel="dc:conformsTo"
+     resource="http://www.w3.org/TR/rdfa-syntax"></div>
+   <p>
+    <a href="http://validator.w3.org/check?uri=referer"><img style="border: 0; float: right; padding: 5px;"
+        src="http://www.w3.org/Icons/valid-xhtml-rdfa"
+        alt="Valid XHTML + RDFa" height="31" width="88" /></a>
+   </p>
    <p class="copyright">
+    <span about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="dc:rights">Copyright &#169; 2011 David Brooks</span>.
+	
+    <!-- Creative Commons License -->
     <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
-     <img alt="Creative Commons Licence" style="border-width:0; float:right;"
+     <img alt="Creative Commons Licence" style="border-width:0; float:right; padding: 5px"
       src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" />
-    </a>
-    Copyright &copy; 2011 by David Brooks.
-    This work is licensed under a
-    <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
-    Attribution-ShareAlike 3.0 Unported License</a>, so you are granted to use, copy,
-    distribute, transmit and adapt this work, but you must attribute the work to the
-    original authors and distribute the resulting work under similar terms.
+    </a>This work is licensed under a
+    <a about="http://www.biosignalml.org/ontologies/2011/04/biosignalml.html"
+     rel="license dc:license" href="http://creativecommons.org/licenses/by-sa/3.0/"
+     title="Creative Commons Attribution-ShareAlike 3.0 Unported License">Creative Commons Attribute-ShareAlike 3.0 Unported License</a>,
+    so you are granted to use, copy, distribute, transmit and adapt this work, but you must attribute the work to the
+    original authors and distribute the resulting work under similar terms. This copyright applies to the <em>BioSignalML Ontology</em> 
+    and accompanying documentation in RDF. The <em>BioSignalML Ontology</em> uses W3C's <a href="http://www.w3.org/RDF/">RDF</a> technology, an
+    open Web standard that can be freely used by anyone.
    </p>
    <p class="copyright" style="clear:both">
     This work is supported by ...
@@ -95,6 +95,7 @@
   </div>
 
   <hr />
+
   <h2 id="abstract">Abstract</h2>
   <p>This specification defines the ....</p>
 
