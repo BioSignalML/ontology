@@ -143,7 +143,7 @@ if __name__ == '__main__':
   print '{\\tablespacing\\sffamily\\setlength{\\parindent}{0pt}'
 ##  print('\\vspace{3ex}')
   for p in PROPERTIES:
-    print '\\section*{%s}' % p[0][1]
+    print '\\section{%s}' % p[0][1]
     for r in g.query('\n'.join(['prefix %s: <%s>' % (x, u) for x, u in PREFIXES.iteritems()]
                              + ['',
                                 'select ?s ' + ' '.join(['?%s' % n for n in p[1]])
