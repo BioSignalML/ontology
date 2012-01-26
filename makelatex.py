@@ -1,4 +1,4 @@
-import os, time
+import sys, os
 
 import biosignalml.rdf as rdf
 
@@ -49,6 +49,11 @@ PRINTORDER = [ 'equivclass', 'equivprop',
                'subclasses', 'subprops',
                'domain',     'range',
              ]
+
+
+SECTION    = "section"
+SELECTED   = None         # Print everything
+
 
 
 def abbreviate(u):
@@ -132,6 +137,18 @@ class Term(object):
 if __name__ == '__main__':
 #-------------------------
 
+
+  if len(sys.argv) > 1:
+    SECTION = "subsection*"
+    SELECTED = [ 'bsml:Recording',
+                 'bsml:Signal',
+                 'bsml:Event',
+                 'bsml:Annotation',
+                 'bsml:rate',
+                 'bsml:units',
+               ]
+
+
   fullname = 'file://' + os.path.abspath(SOURCE)
 
   lastcls = ''
@@ -143,7 +160,7 @@ if __name__ == '__main__':
   print '{\\tablespacing\\sffamily\\setlength{\\parindent}{0pt}'
 ##  print('\\vspace{3ex}')
   for p in PROPERTIES:
-    print '\\section{%s}' % p[0][1]
+    print '\\%s{%s}' % (SECTION, p[0][1])
     for r in g.query('\n'.join(['prefix %s: <%s>' % (x, u) for x, u in PREFIXES.iteritems()]
                              + ['',
                                 'select ?s ' + ' '.join(['?%s' % n for n in p[1]])
@@ -163,11 +180,12 @@ if __name__ == '__main__':
                               )):
 
       uri = abbreviate(r['s'])
-      if uri != lasturi:
-        if term: print term.latex()
-        term = Term(r['s'].uri, p[0][0], p[1], p[2])
-        lasturi = uri
-      term.add(r)
+      if SELECTED is None or uri in SELECTED:
+        if uri != lasturi:
+          if term: print term.latex()
+          term = Term(r['s'].uri, p[0][0], p[1], p[2])
+          lasturi = uri
+        term.add(r)
 
 
   if term: print term.latex()
