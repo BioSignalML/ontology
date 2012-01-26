@@ -1,9 +1,10 @@
-/* From http://smiy.sourceforge.net/css/style.css */
+/* Based on http://smiy.sourceforge.net/css/style.css */
 
 body {
-  margin-left: 4em;
-  margin-right: 9em;
-  text-align: justify;
+  margin: 0px auto ;
+  padding: 1ex ;
+  width: 90% ;
+  text-align: justify ;
   }
 
 @media only print {
@@ -12,6 +13,11 @@ body {
    margin: 0 ;
    }
  }
+
+div.head h1 {
+  clear: none ;
+  margin-top: 2ex;
+  }
 
 .termdetails {
   }
@@ -71,7 +77,7 @@ div.rdf-classlist h3 {
 
 .specterm h3 {
 /*      foreground-color: #000; */
-  background-color: #bbf;
+  background-color: #ddf;
   font-size: 100%;
   margin: 0;
   padding: 3px;
@@ -147,4 +153,18 @@ h2.specgroup {
   margin-left: 10px ;
   width: 60px ;
   clear: both ;
+  }
+
+ol#appendix {
+  list-style-type: upper-alpha ;
+  }
+
+.centered {
+  display: block ;
+  margin-left: auto ;
+  margin-right: auto ;
+  }
+
+.todo {
+  background: yellow ;
   }
