@@ -5,6 +5,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 @prefix bsml: <http://www.biosignalml.org/ontologies/2011/04/biosignalml#> .
@@ -192,7 +193,7 @@ bsml:sensor
 bsml:source
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       dc:description "The source of a Recording or Signal." ;
-      rdfs:subPropertyOf dc:source ;
+      rdfs:subPropertyOf dcterms:source ;
       rdfs:domain [
         a owl:Class ;
         owl:unionOf (bsml:Recording bsml:Signal) ;
@@ -202,7 +203,7 @@ bsml:source
 
 bsml:format
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:subPropertyOf dc:format ;
+      rdfs:subPropertyOf dcterms:format ;
       dc:description "The format used to hold the recording." ;
       rdfs:domain bsml:Recording ;
       rdfs:range bsml:Format .
