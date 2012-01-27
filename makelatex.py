@@ -23,7 +23,7 @@ PROPERTIES = [ ( ( 'Class', 'Classes', ['owl:Class']),
                    'desc':       ('',                   'dc:description'),
                    'comment':    ('',                   'rdfs:comment'),
                    'seealso':    ('',                   'rdfs:seeAlso'),
-                   'type':       ('',                   'a'),
+#                   'type':       ('',                   'a'),
                    'superclass': ('Sub class of',       'rdfs:subClassOf'),
                    'equivclass': ('Equivalent Class',   'owl:equivalentClass') },
                  { 'subclasses': ('Has sub class',      'rdfs:subClassOf'),
@@ -160,6 +160,8 @@ if __name__ == '__main__':
   print '{\\tablespacing\\sffamily\\setlength{\\parindent}{0pt}'
 ##  print('\\vspace{3ex}')
   for p in PROPERTIES:
+    if term: print term.latex()
+    term = None
     print '\\%s{%s}' % (SECTION, p[0][1])
     for r in g.query('\n'.join(['prefix %s: <%s>' % (x, u) for x, u in PREFIXES.iteritems()]
                              + ['',
