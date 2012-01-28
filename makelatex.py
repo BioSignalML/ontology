@@ -157,7 +157,7 @@ if __name__ == '__main__':
 
   term = None
   lasturi = ''
-  print '{\\tablespacing\\sffamily\\setlength{\\parindent}{0pt}'
+  print '{\\setstretch{1.1}\\sffamily\\setlength{\\parindent}{0pt}'
 ##  print('\\vspace{3ex}')
   for p in PROPERTIES:
     if term: print term.latex()
