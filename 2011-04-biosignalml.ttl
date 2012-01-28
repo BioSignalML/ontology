@@ -166,6 +166,7 @@ bsml:UnitOfMeasure
       dc:description "The class used to represent the types of measurement units used by signals." ;
       rdfs:comment
         """Measurement units would normally be entities in a specialised units of measure ontology.""" ;
+      owl:equivalentClass uome-core:UnitOfMeasurement ;
       rdfs:seeAlso <http://www.sbpax.org/uome/list.html> ;
       .
 
