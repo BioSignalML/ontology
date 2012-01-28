@@ -7,6 +7,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix uome-core: <http://www.sbpax.org/uome/core.owl#> .
 
 @prefix bsml: <http://www.biosignalml.org/ontologies/2011/04/biosignalml#> .
 
@@ -72,7 +73,7 @@ bsml:UniformSignal
 
 
 bsml:SampleClock
-      dc:description """An increasing sequence of sample coordinates""" ;
+      dc:description """An increasing sequence of sample coordinates.""" ;
       rdfs:comment """Several signals may use the same clock.""" ;
       rdf:type owl:Class .
 
@@ -223,7 +224,7 @@ bsml:signalType
 bsml:units
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       dc:description "The physical units that are represented by a signal's data values." ;
-      rdfs:comment "Specification of units allows for consistency checking and automatic conversion" ;
+      rdfs:comment "Specification of units allows for consistency checking and automatic conversion." ;
       rdfs:domain bsml:Signal ;
       rdfs:range bsml:UnitOfMeasure .
 
