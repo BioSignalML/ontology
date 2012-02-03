@@ -242,6 +242,13 @@ bsml:clock
 #
 #################################################################
 
+bsml:dataBits
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      dc:description """The binary-bit resolution of the analogue-to-digital convertor or
+        sampling device used to digitise the signal.""" ;
+      rdfs:domain bsml:Signal ;
+      rdfs:range xsd:integer .
+
 bsml:minFrequency
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       dc:description "The minimum frequency, in Hertz, contained in the signal." ;
@@ -263,7 +270,7 @@ bsml:maxValue
 
 bsml:minValue
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dc:description "The minimum value of the signals data value." ;
+      dc:description "The minimum value of the signal." ;
       rdfs:domain bsml:Signal ;
       rdfs:range xsd:double .
 
