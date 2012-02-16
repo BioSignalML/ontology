@@ -71,7 +71,7 @@ bsml:Process
       dc:description
         """Some method or algorithm applied to one or more Signals in order to derive
            information. The result could vary along a sampling dimension and be considered
-           as a Signal."""" ;
+           as a Signal.""" ;
       .
 
 bsml:UniformSignal
