@@ -42,7 +42,8 @@ dc:description rdf:type owl:AnnotationProperty .
 bsml:Recording
       rdf:type owl:Class ;
       dc:description
-        """A collection of Signals that have been recorded simultaneously and kept together.""" ;
+        """A collection of Signals held as a named entity, all pertaining to one thing
+          (the subject) and which have been recorded in the same session.""" ;
       .
 
 bsml:Signal
@@ -58,13 +59,20 @@ bsml:Event
         """Something that has occurred in time, possibly for some duration.""" ;
       .
 
-
 bsml:Annotation
       rdf:type owl:Class ;
       dc:description
         """A general note, comment, or qualitative measure about the whole of,
-           or some portion of, a Recording, Signal or Event.""" .
+           or some portion of, a Recording, Signal or Event.""" ;
+      .
 
+bsml:Process
+      rdf:type owl:Class ;
+      dc:description
+        """Some method or algorithm applied to one or more Signals in order to derive
+           information. The result could vary along a sampling dimension and be considered
+           as a Signal."""" ;
+      .
 
 bsml:UniformSignal
       rdfs:subClassOf bsml:Signal ;
