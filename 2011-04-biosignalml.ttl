@@ -296,6 +296,12 @@ bsml:rate
       rdfs:range xsd:double .
 
 
+bsml:index
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      dc:description "The 0-origin position of a signal in a physical recording."
+      rdfs:domain bsml:Signal ;
+      rdfs:range xsd:integer .
+
 #################################################################
 #
 #    Individuals
