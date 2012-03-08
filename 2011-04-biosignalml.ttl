@@ -337,7 +337,8 @@ bsml:WFDB
       rdf:type bsml:Format , owl:NamedIndividual .
 
 
-bsml:BioSignalML
+bsml:BSML_HDF5
+      dc:description "A HDF5-based container for BioSignalML recordings."
       rdf:type bsml:Format , owl:NamedIndividual .
 
 bsml:FieldML
