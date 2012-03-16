@@ -144,7 +144,9 @@ if __name__ == '__main__':
                  'bsml:Signal',
                  'bsml:Event',
                  'bsml:Annotation',
+                 'bsml:Process',
                  'bsml:rate',
+                 'bsml:dataBits',
                  'bsml:units',
                ]
 
