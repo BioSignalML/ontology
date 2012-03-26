@@ -298,7 +298,7 @@ bsml:rate
 
 bsml:index
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dc:description "The 0-origin position of a signal in a physical recording."
+      dc:description "The 0-origin position of a signal in a physical recording." ;
       rdfs:domain bsml:Signal ;
       rdfs:range xsd:integer .
 
