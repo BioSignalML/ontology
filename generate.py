@@ -37,10 +37,10 @@ if __name__ == '__main__':
     'Full documentation of the ontology is at %s' % BSML_NAMESPACE[:-1],
     '"""',
     '',
-    'from biosignalml.rdf import Uri, Resource, NS as Namespace',
+    'from biosignalml.rdf import Resource, NS as Namespace',
     '',
     'class BSML(object):',
-    '  URI = BSML_NAMESPACE',
+    '  URI = "%s"' % BSML_NAMESPACE,
     '  NS = Namespace(URI)',
     ])
 
