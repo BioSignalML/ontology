@@ -40,8 +40,8 @@ if __name__ == '__main__':
     'from biosignalml.rdf import Uri, Resource, NS as Namespace',
     '',
     'class BSML(object):',
-    '  URI = BSML_NAMESPACE'
-    '  NS = Namespace(URI)'
+    '  URI = BSML_NAMESPACE',
+    '  NS = Namespace(URI)',
     ])
 
   lastcls = ''
