@@ -41,7 +41,7 @@ if __name__ == '__main__':
     '',
     'class BSML(object):',
     '  URI = BSML_NAMESPACE'
-    '  NS = Namespace(BSML.URI)'
+    '  NS = Namespace(URI)'
     ])
 
   lastcls = ''
