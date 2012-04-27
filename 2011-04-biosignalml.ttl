@@ -155,6 +155,7 @@ bsml:Electrode
 
 bsml:Format
       rdf:type owl:Class ;
+      rdfs:subClassOf dcterms:MediaType ;
       dcterms:description
         """The particular storage format used to encode a Recording (e.g. EDF+, WFDB, SCP-ECG, MFER).""" .
 
