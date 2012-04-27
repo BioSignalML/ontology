@@ -8,7 +8,7 @@ SOURCE = '2011-04-biosignalml.ttl'
 
 
 PREFIXES = { 'owl':  'http://www.w3.org/2002/07/owl#',
-             'dc':   'http://purl.org/dc/elements/1.1/',
+             'dcterms': 'http://purl.org/dc/terms/',
              'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
              'bsml':  BSML_NAMESPACE,
            }
@@ -50,7 +50,7 @@ if __name__ == '__main__':
                            + ['',
                               'select ?class ?subject ?desc ?comment where {',
                               '  ?subject a ?class .',
-                              '  optional { ?subject dc:description ?desc } .',
+                              '  optional { ?subject dcterms:description ?desc } .',
                               '  optional { ?subject rdfs:comment ?comment } .',
                               '  filter( ' + ' || '.join(['?class = %s' % c for c in CLASSES]) + ' )',
                               '  } order by ?class ?subject'])):
