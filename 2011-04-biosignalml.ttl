@@ -7,7 +7,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix uome-core: <http://www.sbpax.org/uome/core.owl#> .
-@prefix ao: <http://purl.org/ao/> .
+@prefix oa: <http://www.openannotation.org/ns/> .
 
 @prefix bsml: <http://www.biosignalml.org/ontologies/2011/04/biosignalml#> .
 
@@ -61,7 +61,7 @@ bsml:Event
 
 bsml:Annotation
       rdf:type owl:Class ;
-      owl:equivalentClass ao:Annotation ;
+      owl:equivalentClass oa:Annotation ;
       dcterms:description
         """A general note, comment, or qualitative measure about the whole of,
            or some portion of, a Recording, Signal or Event.""" ;
