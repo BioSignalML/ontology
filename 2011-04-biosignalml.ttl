@@ -12,7 +12,7 @@
 @prefix bsml: <http://www.biosignalml.org/ontologies/2011/04/biosignalml#> .
 
 
-bsml: rdf:type owl:Ontology .
+<http://www.biosignalml.org/ontologies/2011/04/biosignalml#> rdf:type owl:Ontology .
 
 
 #################################################################
