@@ -12,7 +12,14 @@
 @prefix bsml: <http://www.biosignalml.org/ontologies/2011/04/biosignalml#> .
 
 
-<http://www.biosignalml.org/ontologies/2011/04/biosignalml#> rdf:type owl:Ontology .
+#################################################################
+#
+#    Ontology properties
+#
+#################################################################
+
+<http://www.biosignalml.org/ontologies/2011/04/biosignalml>
+      a owl:Ontology .
 
 
 #################################################################
@@ -21,16 +28,11 @@
 #
 #################################################################
 
-dcterms:subject rdf:type owl:AnnotationProperty .
+dcterms:subject
+      a owl:AnnotationProperty .
 
-dcterms:description rdf:type owl:AnnotationProperty .
-
-
-#################################################################
-#
-#    Datatypes
-#
-#################################################################
+dcterms:description
+      a owl:AnnotationProperty .
 
 
 #################################################################
