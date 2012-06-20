@@ -63,7 +63,7 @@ bsml:Event
 
 bsml:Annotation
       rdf:type owl:Class ;
-      owl:equivalentClass oa:Annotation ;
+      rdfs:subClassof oa:Annotation ;
       dcterms:description
         """A general note, comment, or qualitative measure about the whole of,
            or some portion of, a Recording, Signal or Event.""" ;
@@ -243,7 +243,7 @@ bsml:units
 
 bsml:clock
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      dcterms:description "The sampling coordinates aassociated with a signal's data values." ;
+      dcterms:description "The sampling coordinates associated with a signal's data values." ;
       rdfs:domain bsml:Signal ;
       rdfs:range bsml:SampleClock .
 
@@ -297,6 +297,13 @@ bsml:rate
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
       dcterms:description "The sampling rate, in Hertz, of a uniformly sampled signal." ;
       rdfs:domain bsml:UniformSignal ;
+      rdfs:range xsd:double .
+
+
+bsml:resolution
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      dcterms:description "The resolution, in seconds, of a clock's timing." ;
+      rdfs:domain bsml:SampleClock ;
       rdfs:range xsd:double .
 
 
