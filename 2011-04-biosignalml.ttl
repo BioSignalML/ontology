@@ -8,6 +8,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix uome-core: <http://www.sbpax.org/uome/core.owl#> .
 @prefix oa: <http://www.w3.org/ns/openannotation/core/> .
+@prefix opb: <http://bhi.washington.edu/OPB#> .
 
 @prefix bsml: <http://www.biosignalml.org/ontologies/2011/04/biosignalml#> .
 
@@ -51,22 +52,24 @@ bsml:Recording
 bsml:Signal
       rdf:type owl:Class ;
       dcterms:description
-        """A sequence of periodic measurements of some quantity, ordered by some sampling
+        """A sequence of periodic measurements of some physical quantity, ordered by some sampling
            dimension, normally time. A Signal is part of some Recording.""" ;
+      rdfs:subClassOf opb:OPB_00002 ;
       .
 
 bsml:Event
       rdf:type owl:Class ;
       dcterms:description
         """Something that has occurred in time, possibly for some duration.""" ;
+      rdfs:subClassOf opb:OPB_00277 ;
       .
 
 bsml:Annotation
       rdf:type owl:Class ;
-      rdfs:subClassof oa:Annotation ;
       dcterms:description
         """A general note, comment, or qualitative measure about the whole of,
            or some portion of, a Recording, Signal or Event.""" ;
+      rdfs:subClassOf oa:Annotation ;
       .
 
 bsml:Process
@@ -75,6 +78,7 @@ bsml:Process
         """Some method or algorithm applied to one or more Signals in order to derive
            information. The result could vary along a sampling dimension and be considered
            as a Signal.""" ;
+      rdfs:subClassOf opb:OPB_00424 ;
       .
 
 bsml:UniformSignal
