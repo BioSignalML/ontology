@@ -7,7 +7,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix uome-core: <http://www.sbpax.org/uome/core.owl#> .
-@prefix oa: <http://www.openannotation.org/ns/> .
+@prefix oa: <http://www.w3.org/ns/openannotation/core/> .
 
 @prefix bsml: <http://www.biosignalml.org/ontologies/2011/04/biosignalml#> .
 
