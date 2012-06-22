@@ -303,6 +303,18 @@ bsml:rate
       rdfs:domain bsml:UniformSignal ;
       rdfs:range xsd:double .
 
+bsml:offset
+      rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
+      rdfs:subPropertyOf dcterms:temporal ;
+      dcterms:description "The temporal offset from the start of a recording of a signal's first sample." ;
+      rdfs:range xsd:duration .
+
+bsml:index
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      dcterms:description "The 0-origin position of a signal in a physical recording." ;
+      rdfs:domain bsml:Signal ;
+      rdfs:range xsd:integer .
+
 
 bsml:resolution
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
@@ -310,12 +322,6 @@ bsml:resolution
       rdfs:domain bsml:SampleClock ;
       rdfs:range xsd:double .
 
-
-bsml:index
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dcterms:description "The 0-origin position of a signal in a physical recording." ;
-      rdfs:domain bsml:Signal ;
-      rdfs:range xsd:integer .
 
 #################################################################
 #
