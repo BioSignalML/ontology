@@ -149,7 +149,7 @@ bsml:Transducer
       dcterms:description
         """A device that converts a measurable quantity into an electrical signal
            (e.g. thermistor, pressure sensor, strain gauge).""" ;
-      rdfs:seeAlso <http://en.wikipedia.org/wiki/Transducer> .
+      rdfs:seeAlso <http://dbpedia.org/resource/Transducer> .
 
 bsml:Electrode
       rdf:type owl:Class ;
