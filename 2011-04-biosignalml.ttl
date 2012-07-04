@@ -5,6 +5,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix uome-core: <http://www.sbpax.org/uome/core.owl#> .
 @prefix oa: <http://www.w3.org/ns/openannotation/core/> .
@@ -121,12 +122,7 @@ bsml:Notch_Filter
 
 bsml:Source
       rdf:type owl:Class ;
-      dcterms:description "The source (i.e. file, device, simulation, etc) of a Signal or Recording." .
-
-bsml:Dataset
-      rdf:type owl:Class ;
-      rdfs:subClassOf bsml:Source ;
-      dcterms:description "A collection of data files or web services that contain Recording or Signal information." .
+      dcterms:description "The source (i.e. device, simulation, etc) of a Signal or Recording." .
 
 bsml:Simulation
       rdf:type owl:Class ;
@@ -213,15 +209,14 @@ bsml:sensor
       rdfs:domain bsml:Signal ;
       rdfs:range bsml:Sensor .
 
-bsml:source
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      dcterms:description "The source of a Recording or Signal." ;
-      rdfs:subPropertyOf dcterms:source ;
+bsml:dataset
+      rdf:type owl:FunctionalProperty, owl:ObjectProperty ;
+      dcterms:description "The location of actual signal data." ;
       rdfs:domain [
         a owl:Class ;
         owl:unionOf (bsml:Recording bsml:Signal) ;
         ] ;
-      rdfs:range bsml:Source .
+      rdfs:range dctype:Dataset .
 
 
 bsml:format
@@ -425,3 +420,30 @@ bsml:EEG
       bsml:ECG
       bsml:EEG
       ) .
+
+
+
+# PhysioBank:
+#
+# BP      blood pressure
+# CO      cardiac output
+# CO2     carbon dioxide
+# ECG     electrocardiogram
+# EEG     electroencephalogram
+# EMG     electromyogram
+# EOG     electrooculogram
+# EP      evoked potential
+# Flow    air flow
+# HR      heart rate
+# Noise   for stress testing
+# O2      oxygen
+# PLETH   plethysmogram
+# Pos     body position
+# Resp    respiration
+# Sound   sound
+# ST      ECG ST segment level
+# Status  of patient or monitor
+# Stim    stimulus
+# SV      stroke volume
+# Temp    temperature
+
