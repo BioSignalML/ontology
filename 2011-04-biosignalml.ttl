@@ -156,7 +156,6 @@ bsml:Electrode
       rdfs:subClassOf bsml:Sensor .
 
 
-
 bsml:Format
       rdf:type owl:Class ;
       rdfs:subClassOf dcterms:MediaType ;
@@ -167,12 +166,31 @@ bsml:SignalType
       rdf:type owl:Class ;
       dcterms:description "The class or type of signal (e.g. EEG, ECG)." .
 
+bsml:EventType
+      rdf:type owl:Class ;
+      dcterms:description
+        """Something which is the class or type of an Event.""" ;
+      .
 
 bsml:TemporalEntity
       rdf:type owl:Class ;
       owl:equivalentClass time:TemporalEntity ;
-      dcterms:description "Some measurement of time, either as a particular point in time or as some interval." .
+      dcterms:description "Some measurement of time, either as a particular point in time or as some interval." ;
+      .
 
+bsml:Instant
+      rdf:type owl:Class ;
+      rdfs:subClassOf bsml:TemporalEntity ;
+      owl:equivalentClass time:Instant ;
+      dcterms:description "A particular point in time." ;
+      .
+
+bsml:Interval
+      rdf:type owl:Class ;
+      rdfs:subClassOf bsml:TemporalEntity ;
+      owl:equivalentClass time:Interval ;
+      dcterms:description "A period in time." ;
+      .
 
 bsml:UnitOfMeasure
       rdf:type owl:Class ;
@@ -182,6 +200,19 @@ bsml:UnitOfMeasure
       owl:equivalentClass uome-core:UnitOfMeasurement ;
       rdfs:seeAlso <http://www.sbpax.org/uome/list.html> ;
       .
+
+bsml:RecordingGraph
+      rdf:type owl:Class ;
+      dcterms:description
+        """A RDF graph containing Recording metadata, used for managing provenance.""" ;
+      .
+
+bsml:ErrorTAG
+      rdf:type owl:Class ;
+      dcterms:description
+        """A tag to indicate that an annotation relates to some form of error.""" ;
+      .
+
 
 #################################################################
 #
@@ -232,19 +263,34 @@ bsml:signalType
       rdfs:domain bsml:Signal ;
       rdfs:range bsml:SignalType .
 
+bsml:eventType
+      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
+      dcterms:description "The class or type of an Event." ;
+      rdfs:domain bsml:Event ;
+      rdfs:range bsml:EventType .
+
 bsml:units
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       dcterms:description "The physical units that are represented by a signal's data values." ;
       rdfs:comment "Specification of units allows for consistency checking and automatic conversion." ;
       rdfs:domain bsml:Signal ;
-      rdfs:range bsml:UnitOfMeasure .
-
+      rdfs:range bsml:UnitOfMeasure ;
+      .
 
 bsml:clock
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       dcterms:description "The sampling coordinates associated with a signal's data values." ;
       rdfs:domain bsml:Signal ;
-      rdfs:range bsml:SampleClock .
+      rdfs:range bsml:SampleClock ;
+      .
+
+bsml:tag
+      rdf:type owl:ObjectProperty ;
+      rdfs:domain bsml:Annotation ;
+      dcterms:description """A semantic tag given to a resource by an annotation.
+
+      Tags are effectively controlled keywords.""" ;
+      .
 
 
 #################################################################
@@ -301,7 +347,7 @@ bsml:rate
 bsml:offset
       rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
       rdfs:subPropertyOf dcterms:temporal ;
-      dcterms:description "The temporal offset from the start of a recording of a signal's first sample." ;
+      dcterms:description "The temporal offset, from the beginning of a recording, to a signal's first sample." ;
       rdfs:range xsd:duration .
 
 bsml:index
@@ -317,50 +363,17 @@ bsml:resolution
       rdfs:domain bsml:SampleClock ;
       rdfs:range xsd:double .
 
+bsml:time
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      dcterms:description "The temporal offset, from the beginning of a recording, to the start of some event." ;
+      rdfs:range xsd:duration .
+
 
 #################################################################
 #
 #    Individuals
 #
 #################################################################
-
-bsml:EDF
-      dcterms:title "European Data Format" ;
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-bsml:EDFplus
-      dcterms:title "European Data Format +" ;
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-bsml:MFER
-      dcterms:title "Medical Format Encoding Rules" ;
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-bsml:RAW
-      dcterms:description "Raw, binary data with unknown format." ;
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-bsml:SCP_ECG
-      dcterms:title "Standard Communications Protocol for ECG" ;
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-bsml:SDF
-      dcterms:title "Stanford Data Format" ;
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-bsml:WFDB
-      dcterms:title "WaveForm DataBase" ;
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-
-bsml:BSML_HDF5
-      dcterms:description "A HDF5-based container for BioSignalML recordings." ;
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-bsml:FieldML
-      rdf:type bsml:Format , owl:NamedIndividual .
-
-
 
 bsml:BP
       dcterms:title "Blood Pressure" ;
