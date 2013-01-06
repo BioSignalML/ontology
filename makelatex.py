@@ -58,7 +58,7 @@ SELECTED   = None         # Print everything
 
 def abbreviate(u):
 #-----------------
-  s = str(u) if u else ''
+  s = str(u).replace('#', '\\#') if u else ''
   for p, n in PREFIXES.iteritems():
     if s.startswith(n): return ''.join([p, ':', s[len(n):]]).replace('_', '\\_')
   return s.replace('_', '\\_')
@@ -70,7 +70,7 @@ class Term(object):
 
   def __init__(self, uri, kind, referto, referby):
   #-----------------------------------------------
-    self.uri = uri
+    self.uri = str(uri)
     self.kind = kind
     self.prompts = { }
     self.attributes = { }
@@ -86,7 +86,7 @@ class Term(object):
     for n, r in results.iteritems():
       if n != 's' and r:
         v = None
-        if n == 'seealso': v = r.uri
+        if n == 'seealso': v = str(r.uri).replace('#', '\\#')
 #        elif r.is_blank() and n in ['domain', 'range']:
 
 #          select ?c where { str(r) owl:unionOf ?c } order by ?c
@@ -111,7 +111,7 @@ class Term(object):
     if desc: l.append(desc)
 ##  doc = [ '\\textbf{\\large %s: %s}' % (self.kind, abbreviate(self.uri)),
     doc = [ '\\subsubsection{%s: %s}' % (self.kind, abbreviate(self.uri)),
-            '\\par URI: \\plainurl{%s}' % self.uri,
+            '\\par URI: \\url{%s}' % self.uri,
             '\\par %s' %  ' --- '.join(l),
           ]
     atts = [ ]
@@ -137,7 +137,6 @@ class Term(object):
 if __name__ == '__main__':
 #-------------------------
 
-
   if len(sys.argv) > 1:
     SECTION = "subsection*"
     SELECTED = [ 'bsml:Recording',
@@ -150,15 +149,19 @@ if __name__ == '__main__':
                  'bsml:units',
                ]
 
-
   fullname = 'file://' + os.path.abspath(SOURCE)
-
   lastcls = ''
   g = rdf.Graph.create_from_resource(fullname, rdf.Format.TURTLE)
-
-
   term = None
   lasturi = ''
+
+  if SELECTED is None:
+    print """% !TEX root = ../Thesis.tex
+
+\chapter{The BioSignalML  Ontology}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{apx:ontology}
+"""
   print '{\\setstretch{1.1}\\sffamily\\setlength{\\parindent}{0pt}'
 ##  print('\\vspace{3ex}')
   for p in PROPERTIES:
