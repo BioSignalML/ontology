@@ -7,7 +7,7 @@ rm biosignalml.ttl
 rm biosignalml.rdf
 rm biosignalml.html
 ln -s biosignalml-$1.ttl  biosignalml.ttl
-ln -s biosignalml-$1.rdf  biosignalml.ttl
+ln -s biosignalml-$1.rdf  biosignalml.rdf
 ln -s biosignalml-$1.html biosignalml.html
 git add biosignalml-$1.ttl  biosignalml.ttl
 git add biosignalml-$1.rdf  biosignalml.rdf
