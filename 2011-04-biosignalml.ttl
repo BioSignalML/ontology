@@ -156,12 +156,6 @@ bsml:Electrode
       rdfs:subClassOf bsml:Sensor .
 
 
-bsml:Format
-      rdf:type owl:Class ;
-      rdfs:subClassOf dcterms:MediaType ;
-      dcterms:description
-        """The particular storage format used to encode a Recording (e.g. EDF+, WFDB, SCP-ECG, MFER).""" .
-
 bsml:SignalType
       rdf:type owl:Class ;
       dcterms:description "The class or type of signal (e.g. EEG, ECG)." .
