@@ -58,10 +58,10 @@ SELECTED   = None         # Print everything
 
 def abbreviate(u):
 #-----------------
-  s = str(u).replace('#', '\\#') if u else ''
+  s = str(u) if u else ''
   for p, n in PREFIXES.iteritems():
     if s.startswith(n): return ''.join([p, ':', s[len(n):]]).replace('_', '\\_')
-  return s.replace('_', '\\_')
+  return s.replace('_', '\\_').replace('#', '\\#')
 
 
 
@@ -162,7 +162,7 @@ if __name__ == '__main__':
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{apx:ontology}
 """
-  print '{\\setstretch{1.1}\\sffamily\\setlength{\\parindent}{0pt}'
+  print '{\raggedright\setstretch{1.1}\setlength{\parindent}{0pt}\def\UrlFont{\small\tt}'
 ##  print('\\vspace{3ex}')
   for p in PROPERTIES:
     if term: print term.latex()
