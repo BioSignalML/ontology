@@ -12,15 +12,14 @@ PREFIXES = { 'rdf':  'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
              'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
              'xsd':  'http://www.w3.org/2001/XMLSchema#',
              'owl':  'http://www.w3.org/2002/07/owl#',
-             'dc':   'http://purl.org/dc/elements/1.1/',
-             'dcterms': 'http://purl.org/dc/terms/',
+             'dct':  'http://purl.org/dc/terms/',
              'time': 'http://www.w3.org/2006/time#',
              'bsml':  BSML_NAMESPACE,
            }
 
 PROPERTIES = [ ( ( 'Class', 'Classes', ['owl:Class']),
                  { 'label':      ('',                   'rdfs:label'),
-                   'desc':       ('',                   'dc:description'),
+                   'desc':       ('',                   'dct:description'),
                    'comment':    ('',                   'rdfs:comment'),
                    'seealso':    ('',                   'rdfs:seeAlso'),
 #                   'type':       ('',                   'a'),
@@ -32,7 +31,7 @@ PROPERTIES = [ ( ( 'Class', 'Classes', ['owl:Class']),
                ),
                ( ( 'Property', 'Properties', ['owl:ObjectProperty', 'owl:DatatypeProperty']),
                  { 'label':      ('',                   'rdfs:label'),
-                   'desc':       ('',                   'dc:description'),
+                   'desc':       ('',                   'dct:description'),
                    'comment':    ('',                   'rdfs:comment'),
                    'seealso':    ('',                   'rdfs:seeAlso'),
                    'type':       ('',                   'a'),
@@ -162,7 +161,7 @@ if __name__ == '__main__':
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{apx:ontology}
 """
-  print '{\raggedright\setstretch{1.1}\setlength{\parindent}{0pt}\def\UrlFont{\small\tt}'
+  print '{\\raggedright\\setstretch{1.1}\\setlength{\\parindent}{0pt}\\def\\UrlFont{\\small\\tt}'
 ##  print('\\vspace{3ex}')
   for p in PROPERTIES:
     if term: print term.latex()
