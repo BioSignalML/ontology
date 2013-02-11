@@ -12,15 +12,14 @@ PREFIXES = { 'rdf':  'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
              'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
              'xsd':  'http://www.w3.org/2001/XMLSchema#',
              'owl':  'http://www.w3.org/2002/07/owl#',
-             'dc':   'http://purl.org/dc/elements/1.1/',
-             'dcterms': 'http://purl.org/dc/terms/',
+             'dct':  'http://purl.org/dc/terms/',
              'time': 'http://www.w3.org/2006/time#',
              'bsml':  BSML_NAMESPACE,
            }
 
 PROPERTIES = [ ( ( 'Class', 'Classes', ['owl:Class']),
                  { 'label':      ('',                   'rdfs:label'),
-                   'desc':       ('',                   'dc:description'),
+                   'desc':       ('',                   'dct:description'),
                    'comment':    ('',                   'rdfs:comment'),
                    'seealso':    ('',                   'rdfs:seeAlso'),
 #                   'type':       ('',                   'a'),
@@ -32,7 +31,7 @@ PROPERTIES = [ ( ( 'Class', 'Classes', ['owl:Class']),
                ),
                ( ( 'Property', 'Properties', ['owl:ObjectProperty', 'owl:DatatypeProperty']),
                  { 'label':      ('',                   'rdfs:label'),
-                   'desc':       ('',                   'dc:description'),
+                   'desc':       ('',                   'dct:description'),
                    'comment':    ('',                   'rdfs:comment'),
                    'seealso':    ('',                   'rdfs:seeAlso'),
                    'type':       ('',                   'a'),
@@ -61,7 +60,7 @@ def abbreviate(u):
   s = str(u) if u else ''
   for p, n in PREFIXES.iteritems():
     if s.startswith(n): return ''.join([p, ':', s[len(n):]]).replace('_', '\\_')
-  return s.replace('_', '\\_')
+  return s.replace('_', '\\_').replace('#', '\\#')
 
 
 
@@ -70,7 +69,7 @@ class Term(object):
 
   def __init__(self, uri, kind, referto, referby):
   #-----------------------------------------------
-    self.uri = uri
+    self.uri = str(uri)
     self.kind = kind
     self.prompts = { }
     self.attributes = { }
@@ -86,7 +85,7 @@ class Term(object):
     for n, r in results.iteritems():
       if n != 's' and r:
         v = None
-        if n == 'seealso': v = r.uri
+        if n == 'seealso': v = str(r.uri).replace('#', '\\#')
 #        elif r.is_blank() and n in ['domain', 'range']:
 
 #          select ?c where { str(r) owl:unionOf ?c } order by ?c
@@ -111,7 +110,7 @@ class Term(object):
     if desc: l.append(desc)
 ##  doc = [ '\\textbf{\\large %s: %s}' % (self.kind, abbreviate(self.uri)),
     doc = [ '\\subsubsection{%s: %s}' % (self.kind, abbreviate(self.uri)),
-            '\\par URI: \\plainurl{%s}' % self.uri,
+            '\\par URI: \\url{%s}' % self.uri,
             '\\par %s' %  ' --- '.join(l),
           ]
     atts = [ ]
@@ -137,7 +136,6 @@ class Term(object):
 if __name__ == '__main__':
 #-------------------------
 
-
   if len(sys.argv) > 1:
     SECTION = "subsection*"
     SELECTED = [ 'bsml:Recording',
@@ -150,16 +148,20 @@ if __name__ == '__main__':
                  'bsml:units',
                ]
 
-
   fullname = 'file://' + os.path.abspath(SOURCE)
-
   lastcls = ''
   g = rdf.Graph.create_from_resource(fullname, rdf.Format.TURTLE)
-
-
   term = None
   lasturi = ''
-  print '{\\setstretch{1.1}\\sffamily\\setlength{\\parindent}{0pt}'
+
+  if SELECTED is None:
+    print """% !TEX root = ../Thesis.tex
+
+\chapter{The BioSignalML  Ontology}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{apx:ontology}
+"""
+  print '{\\raggedright\\setstretch{1.1}\\setlength{\\parindent}{0pt}\\def\\UrlFont{\\small\\tt}'
 ##  print('\\vspace{3ex}')
   for p in PROPERTIES:
     if term: print term.latex()
