@@ -44,15 +44,15 @@
    </a>
    <h1 about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="dc:title">The BioSignalML Ontology</h1>
    <h2>An ontology for working with biosignals</h2>
-   <h2>Version <span about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="owl:versionInfo" datatype="xsd:decimal">0.92.1</span>
+   <h2>Version <span about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="owl:versionInfo" datatype="xsd:decimal">0.93.1</span>
              - <span about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="dc:date"
-                     content="2012-06-24T00:01:00+12:00" datatype="xsd:dateTime">24 June 2012</span></h2>
+                     content="2013-01-07T14:37:00+13:00" datatype="xsd:dateTime">7 January 2013</span></h2>
    <dl>
     <dt>This version:</dt><dd>
      <a rel="dc:hasVersion" rev="dc:isVersionOf"
-      href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120624.html">http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120624.html</a>
-     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120624.rdf">RDF/XML</a>)
-     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120624.ttl">Turtle</a>)
+      href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-21030107.html">http://www.biosignalml.org/ontologies/2011/04/biosignalml-21030107.html</a>
+     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-21030107.rdf">RDF/XML</a>)
+     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-21030107.ttl">Turtle</a>)
     </dd>
     <dt>Latest version:</dt><dd>
      <a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml.html">http://www.biosignalml.org/ontologies/2011/04/biosignalml.html</a>
@@ -60,11 +60,11 @@
      (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml.ttl">TURTLE</a>)
     </dd>
     <dt>Previous version:</dt><dd>
-     <a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120621.html">http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120621.html</a>
-     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120621.rdf">RDF/XML</a>)
-     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120621.ttl">Turtle</a>)
+     <a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120624.html">http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120624.html</a>
+     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120624.rdf">RDF/XML</a>)
+     (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-20120624.ttl">Turtle</a>)
     </dd>
-    <dt>Last Update:</dt><dd>Date: 24 June 2012</dd>
+    <dt>Last Update:</dt><dd>Date: 7 January 2013</dd>
     <dt>Editors:</dt><dd>David Brooks, Auckland Bioengineering Institute</dd>
     <dt>Acknowledgements:</dt><dd>See <a href="#acknowledgments">acknowledgements</a></dd>
    </dl>
@@ -77,7 +77,7 @@
         alt="Valid XHTML + RDFa" height="31" width="88" /></a>
    </p>
    <p class="copyright">
-    <span about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="dc:rights">Copyright &#169; 2011 David Brooks</span>.
+    <span about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="dc:rights">Copyright &#169; 2011-2013 David Brooks</span>.
 
     <!-- Creative Commons License -->
     <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
@@ -258,6 +258,14 @@
   <div id="changes">
    <h2>B. Changes in this version</h2>
    <ul>
+    <li><p>7 January 2013</p>
+     <ul class="changes">
+      <li>Define EventType, Instant, Interval, RecordingGraph and ErrorTAG classes;
+          define eventType, tag, and time properties; remove Format class and individuals
+          as mimetypes are now used to specify storage formats.
+      </li>
+     </ul>
+    </li>
     <li><p>24 June 2012</p>
      <ul class="changes">
       <li>Use DBpedia instead of Wikipedia as source of further information.</li>
