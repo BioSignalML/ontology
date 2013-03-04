@@ -4,7 +4,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix dctype: <http://purl.org/dc/dcmitype/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix uome-core: <http://www.sbpax.org/uome/core.owl#> .
@@ -30,10 +30,10 @@
 #
 #################################################################
 
-dcterms:subject
+dct:subject
       a owl:AnnotationProperty .
 
-dcterms:description
+dct:description
       a owl:AnnotationProperty .
 
 
@@ -45,14 +45,14 @@ dcterms:description
 
 bsml:Recording
       rdf:type owl:Class ;
-      dcterms:description
+      dct:description
         """A collection of Signals held as a named entity, all pertaining to one thing
           (the subject) and which have been recorded in the same session.""" ;
       .
 
 bsml:Signal
       rdf:type owl:Class ;
-      dcterms:description
+      dct:description
         """A sequence of periodic measurements of some physical quantity, ordered by some sampling
            dimension, normally time. A Signal is part of some Recording.""" ;
       rdfs:subClassOf opb:OPB01015 ;
@@ -60,89 +60,81 @@ bsml:Signal
 
 bsml:Event
       rdf:type owl:Class ;
-      dcterms:description
+      dct:description
         """Something that has occurred in time, possibly for some duration.""" ;
       rdfs:subClassOf opb:OPB01060 ;
       .
 
 bsml:Annotation
       rdf:type owl:Class ;
-      dcterms:description
+      dct:description
         """A general note, comment, or qualitative measure about the whole of,
            or some portion of, a Recording, Signal or Event.""" ;
       rdfs:subClassOf oa:Annotation ;
       .
 
-bsml:Process
-      rdf:type owl:Class ;
-      dcterms:description
-        """Some method or algorithm applied to one or more Signals in order to derive
-           information. The result could vary along a sampling dimension and be considered
-           as a Signal.""" ;
-      rdfs:subClassOf opb:OPB_00424 ;
-      .
 
 bsml:UniformSignal
       rdfs:subClassOf bsml:Signal ;
-      dcterms:description """A signal that has been sampled at a constant rate.""" ;
+      dct:description """A signal that has been sampled at a constant rate.""" ;
       rdf:type owl:Class .
 
 
 bsml:SampleClock
-      dcterms:description """An increasing sequence of sample coordinates.""" ;
+      dct:description """An increasing sequence of sample coordinates.""" ;
       rdfs:comment """Several signals may use the same clock.""" ;
       rdf:type owl:Class .
 
 
 bsml:Filter
       rdf:type owl:Class ;
-      dcterms:description "The class of filter that has been applied to a signal during data collection." .
+      dct:description "The class of filter that has been applied to a signal during data collection." .
 
 bsml:BP_Filter
       rdf:type owl:Class ;
       rdfs:subClassOf bsml:Filter ;
-      dcterms:description "A band-pass filter." .
+      dct:description "A band-pass filter." .
 
 bsml:HP_Filter
       rdf:type owl:Class ;
       rdfs:subClassOf bsml:Filter ;
-      dcterms:description "A high-pass filter." .
+      dct:description "A high-pass filter." .
 
 bsml:LP_Filter
       rdf:type owl:Class ;
       rdfs:subClassOf bsml:Filter ;
-      dcterms:description "A low-pass filter." .
+      dct:description "A low-pass filter." .
 
 bsml:Notch_Filter
       rdf:type owl:Class ;
       rdfs:subClassOf bsml:Filter ;
-      dcterms:description "A notch (blocking) filter." .
+      dct:description "A notch (blocking) filter." .
 
 
 
 bsml:Source
       rdf:type owl:Class ;
-      dcterms:description "The source (i.e. device, simulation, etc) of a Signal or Recording." .
+      dct:description "The source (i.e. device, simulation, etc) of a Signal or Recording." .
 
 bsml:Simulation
       rdf:type owl:Class ;
       rdfs:subClassOf bsml:Source ;
-      dcterms:description "A computer simulation or modelling process that created the Signal or Recording." .
+      dct:description "A computer simulation or modelling process that created the Signal or Recording." .
 
 bsml:Device
       rdf:type owl:Class ;
       rdfs:subClassOf bsml:Source ;
-      dcterms:description "The physical device that saved the output of a sensor into a format able to be stored." .
+      dct:description "The physical device that saved the output of a sensor into a format able to be stored." .
 
 
 bsml:Sensor
-      dcterms:description "What actually captured a signal -- an electrode, transducer, etc." ;
+      dct:description "What actually captured a signal -- an electrode, transducer, etc." ;
       rdf:type owl:Class .
 
 bsml:Transducer
       rdf:type owl:Class ;
       rdfs:subClassOf bsml:Sensor ;
-      dcterms:description
+      dct:description
         """A device that converts a measurable quantity into an electrical signal
            (e.g. thermistor, pressure sensor, strain gauge).""" ;
       rdfs:seeAlso <http://dbpedia.org/resource/Transducer> .
@@ -150,7 +142,7 @@ bsml:Transducer
 bsml:Electrode
       rdf:type owl:Class ;
       rdfs:subClassOf bsml:Sensor ;
-      dcterms:description
+      dct:description
          """An electrical conductor in contact with non-conducting material, through which
             electrical activity can be measured."""  ;
       rdfs:subClassOf bsml:Sensor .
@@ -158,37 +150,37 @@ bsml:Electrode
 
 bsml:SignalType
       rdf:type owl:Class ;
-      dcterms:description "The class or type of signal (e.g. EEG, ECG)." .
+      dct:description "The class or type of signal (e.g. EEG, ECG)." .
 
 bsml:EventType
       rdf:type owl:Class ;
-      dcterms:description
+      dct:description
         """Something which is the class or type of an Event.""" ;
       .
 
 bsml:TemporalEntity
       rdf:type owl:Class ;
       owl:equivalentClass time:TemporalEntity ;
-      dcterms:description "Some measurement of time, either as a particular point in time or as some interval." ;
+      dct:description "Some measurement of time, either as a particular point in time or as some interval." ;
       .
 
 bsml:Instant
       rdf:type owl:Class ;
       rdfs:subClassOf bsml:TemporalEntity ;
       owl:equivalentClass time:Instant ;
-      dcterms:description "A particular point in time." ;
+      dct:description "A particular point in time." ;
       .
 
 bsml:Interval
       rdf:type owl:Class ;
       rdfs:subClassOf bsml:TemporalEntity ;
       owl:equivalentClass time:Interval ;
-      dcterms:description "A period in time." ;
+      dct:description "A period in time." ;
       .
 
 bsml:UnitOfMeasure
       rdf:type owl:Class ;
-      dcterms:description "The class used to represent the types of measurement units used by signals." ;
+      dct:description "The class used to represent the types of measurement units used by signals." ;
       rdfs:comment
         """Measurement units would normally be entities in a specialised units of measure ontology.""" ;
       owl:equivalentClass uome-core:UnitOfMeasurement ;
@@ -197,13 +189,13 @@ bsml:UnitOfMeasure
 
 bsml:RecordingGraph
       rdf:type owl:Class ;
-      dcterms:description
+      dct:description
         """A RDF graph containing Recording metadata, used for managing provenance.""" ;
       .
 
 bsml:ErrorTAG
       rdf:type owl:Class ;
-      dcterms:description
+      dct:description
         """A tag to indicate that an annotation relates to some form of error.""" ;
       .
 
@@ -217,26 +209,26 @@ bsml:ErrorTAG
 
 bsml:preFilter
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      dcterms:description "Pre-filtering applied to a signal as part of collection." ;
+      dct:description "Pre-filtering applied to a signal as part of collection." ;
       rdfs:domain bsml:Signal ;
       rdfs:range bsml:Filter .
 
 bsml:recording
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      dcterms:description "The Recording a Signal is part of." ;
+      dct:description "The Recording a Signal is part of." ;
       rdfs:domain bsml:Signal ;
       rdfs:range bsml:Recording .
 
 
 bsml:sensor
       rdf:type owl:ObjectProperty ;
-      dcterms:description "What was used to collect or derive an electrical signal." ;
+      dct:description "What was used to collect or derive an electrical signal." ;
       rdfs:domain bsml:Signal ;
       rdfs:range bsml:Sensor .
 
 bsml:dataset
       rdf:type owl:FunctionalProperty, owl:ObjectProperty ;
-      dcterms:description "The location of actual signal data." ;
+      dct:description "The location of actual signal data." ;
       rdfs:domain [
         a owl:Class ;
         owl:unionOf (bsml:Recording bsml:Signal) ;
@@ -246,26 +238,26 @@ bsml:dataset
 
 bsml:format
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:subPropertyOf dcterms:format ;
-      dcterms:description "The format used to hold the recording." ;
+      rdfs:subPropertyOf dct:format ;
+      dct:description "The format used to hold the recording." ;
       rdfs:domain bsml:Recording ;
       rdfs:range bsml:Format .
 
 bsml:signalType
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      dcterms:description "A signal's generic type." ;
+      dct:description "A signal's generic type." ;
       rdfs:domain bsml:Signal ;
       rdfs:range bsml:SignalType .
 
 bsml:eventType
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      dcterms:description "The class or type of an Event." ;
+      dct:description "The class or type of an Event." ;
       rdfs:domain bsml:Event ;
       rdfs:range bsml:EventType .
 
 bsml:units
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      dcterms:description "The physical units that are represented by a signal's data values." ;
+      dct:description "The physical units that are represented by a signal's data values." ;
       rdfs:comment "Specification of units allows for consistency checking and automatic conversion." ;
       rdfs:domain bsml:Signal ;
       rdfs:range bsml:UnitOfMeasure ;
@@ -273,7 +265,7 @@ bsml:units
 
 bsml:clock
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      dcterms:description "The sampling coordinates associated with a signal's data values." ;
+      dct:description "The sampling coordinates associated with a signal's data values." ;
       rdfs:domain bsml:Signal ;
       rdfs:range bsml:SampleClock ;
       .
@@ -281,7 +273,7 @@ bsml:clock
 bsml:tag
       rdf:type owl:ObjectProperty ;
       rdfs:domain bsml:Annotation ;
-      dcterms:description """A semantic tag given to a resource by an annotation.
+      dct:description """A semantic tag given to a resource by an annotation.
 
       Tags are effectively controlled keywords.""" ;
       .
@@ -295,77 +287,77 @@ bsml:tag
 
 bsml:dataBits
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dcterms:description """The binary-bit resolution of the analogue-to-digital convertor or
+      dct:description """The binary-bit resolution of the analogue-to-digital convertor or
         sampling device used to digitise the signal.""" ;
       rdfs:domain bsml:Signal ;
       rdfs:range xsd:integer .
 
 bsml:minFrequency
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dcterms:description "The minimum frequency, in Hertz, contained in the signal." ;
+      dct:description "The minimum frequency, in Hertz, contained in the signal." ;
       rdfs:domain bsml:Signal ;
       rdfs:range xsd:double .
 
 bsml:maxFrequency
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dcterms:description "The maximum frequency, in Hertz, contained in the signal." ;
+      dct:description "The maximum frequency, in Hertz, contained in the signal." ;
       rdfs:domain bsml:Signal ;
       rdfs:range xsd:double .
 
 bsml:cutoffFrequency
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dcterms:description "The cutoff frequency, in Hertz, of a filter." ;
+      dct:description "The cutoff frequency, in Hertz, of a filter." ;
       rdfs:domain bsml:Filter ;
       rdfs:range xsd:double .
 
 
 bsml:maxValue
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dcterms:description "The maximum value of the signal." ;
+      dct:description "The maximum value of the signal." ;
       rdfs:domain bsml:Signal ;
       rdfs:range xsd:double .
 
 bsml:minValue
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dcterms:description "The minimum value of the signal." ;
+      dct:description "The minimum value of the signal." ;
       rdfs:domain bsml:Signal ;
       rdfs:range xsd:double .
 
 
 bsml:period
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dcterms:description "The sampling period, in seconds, of a uniformly sampled signal." ;
+      dct:description "The sampling period, in seconds, of a uniformly sampled signal." ;
       rdfs:domain bsml:UniformSignal ;
       rdfs:range xsd:double .
 
 bsml:rate
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dcterms:description "The sampling rate, in Hertz, of a uniformly sampled signal." ;
+      dct:description "The sampling rate, in Hertz, of a uniformly sampled signal." ;
       rdfs:domain bsml:UniformSignal ;
       rdfs:range xsd:double .
 
 bsml:offset
       rdf:type owl:FunctionalProperty , owl:DatatypeProperty ;
-      rdfs:subPropertyOf dcterms:temporal ;
-      dcterms:description "The temporal offset, from the beginning of a recording, to a signal's first sample." ;
+      rdfs:subPropertyOf dct:temporal ;
+      dct:description "The temporal offset, from the beginning of a recording, to a signal's first sample." ;
       rdfs:range xsd:duration .
 
 bsml:index
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dcterms:description "The 0-origin position of a signal in a physical recording." ;
+      dct:description "The 0-origin position of a signal in a physical recording." ;
       rdfs:domain bsml:Signal ;
       rdfs:range xsd:integer .
 
 
 bsml:resolution
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dcterms:description "The resolution, in seconds, of a clock's timing." ;
+      dct:description "The resolution, in seconds, of a clock's timing." ;
       rdfs:domain bsml:SampleClock ;
       rdfs:range xsd:double .
 
 bsml:time
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dcterms:description "The temporal offset, from the beginning of a recording, to the start of some event." ;
+      dct:description "The temporal offset, from the beginning of a recording, to the start of some event." ;
       rdfs:range xsd:duration .
 
 
@@ -376,15 +368,15 @@ bsml:time
 #################################################################
 
 bsml:BP
-      dcterms:title "Blood Pressure" ;
+      dct:title "Blood Pressure" ;
       rdf:type bsml:SignalType , owl:NamedIndividual .
 
 bsml:ECG
-      dcterms:title "Electrocardiogram" ;
+      dct:title "Electrocardiogram" ;
       rdf:type bsml:SignalType , owl:NamedIndividual .
 
 bsml:EEG
-      dcterms:title "Electroencephalogram" ;
+      dct:title "Electroencephalogram" ;
       rdf:type bsml:SignalType , owl:NamedIndividual .
 
 
