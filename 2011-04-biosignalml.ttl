@@ -368,15 +368,15 @@ bsml:time
 #################################################################
 
 bsml:BP
-      dct:title "Blood Pressure" ;
+      rdfs:label "Blood Pressure" ;
       rdf:type bsml:SignalType , owl:NamedIndividual .
 
 bsml:ECG
-      dct:title "Electrocardiogram" ;
+      rdfs:label "Electrocardiogram" ;
       rdf:type bsml:SignalType , owl:NamedIndividual .
 
 bsml:EEG
-      dct:title "Electroencephalogram" ;
+      rdfs:label "Electroencephalogram" ;
       rdf:type bsml:SignalType , owl:NamedIndividual .
 
 
