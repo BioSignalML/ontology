@@ -411,18 +411,6 @@ bsml:EEG
 []
   rdf:type owl:AllDifferent ;
   owl:distinctMembers (
-      bsml:BioSignalML
-      bsml:EDF
-      bsml:EDFplus
-      bsml:FieldML
-      bsml:MFER
-      bsml:SCP_ECG
-      bsml:WFDB
-      ) .
-
-[]
-  rdf:type owl:AllDifferent ;
-  owl:distinctMembers (
       bsml:BP
       bsml:ECG
       bsml:EEG
