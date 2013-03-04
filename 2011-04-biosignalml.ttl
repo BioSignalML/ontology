@@ -193,8 +193,14 @@ bsml:RecordingGraph
         """A RDF graph containing Recording metadata, used for managing provenance.""" ;
       .
 
-bsml:ErrorTAG
+bsml:SemanticTag
       rdf:type owl:Class ;
+      dct:description """A tag used to classify a resource.""" ;
+      .
+
+bsml:ErrorTag
+      rdf:type owl:Class ;
+      rdfs:subClassOf bsml:SemanticTag ;
       dct:description
         """A tag to indicate that an annotation relates to some form of error.""" ;
       .
@@ -378,6 +384,10 @@ bsml:ECG
 bsml:EEG
       rdfs:label "Electroencephalogram" ;
       rdf:type bsml:SignalType , owl:NamedIndividual .
+
+bsml:ErrorTAG
+      rdfs:label "Error TAG" ;
+      rdf:type bsml:ErrorTAG, bsml:SemanticTag, owl:NamedIndividual .
 
 
 #################################################################
