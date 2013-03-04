@@ -312,6 +312,12 @@ bsml:maxFrequency
       rdfs:domain bsml:Signal ;
       rdfs:range xsd:double .
 
+bsml:cutoffFrequency
+      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+      dcterms:description "The cutoff frequency, in Hertz, of a filter." ;
+      rdfs:domain bsml:Filter ;
+      rdfs:range xsd:double .
+
 
 bsml:maxValue
       rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
