@@ -55,14 +55,14 @@ bsml:Signal
       dcterms:description
         """A sequence of periodic measurements of some physical quantity, ordered by some sampling
            dimension, normally time. A Signal is part of some Recording.""" ;
-      rdfs:subClassOf opb:OPB_00002 ;
+      rdfs:subClassOf opb:OPB01015 ;
       .
 
 bsml:Event
       rdf:type owl:Class ;
       dcterms:description
         """Something that has occurred in time, possibly for some duration.""" ;
-      rdfs:subClassOf opb:OPB_00277 ;
+      rdfs:subClassOf opb:OPB01060 ;
       .
 
 bsml:Annotation
