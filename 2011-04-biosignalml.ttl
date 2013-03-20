@@ -10,6 +10,7 @@
 @prefix uome-core: <http://www.sbpax.org/uome/core.owl#> .
 @prefix oa: <http://www.w3.org/ns/openannotation/core/> .
 @prefix opb: <http://bhi.washington.edu/OPB#> .
+@prefix prv: <http://purl.org/net/provenance/ns#> .
 
 @prefix bsml: <http://www.biosignalml.org/ontologies/2011/04/biosignalml#> .
 
@@ -44,7 +45,7 @@ dct:description
 #################################################################
 
 bsml:Recording
-      rdf:type owl:Class ;
+      rdf:type owl:Class, a prv:DataItem ;
       dct:description
         """A collection of Signals held as a named entity, all pertaining to one thing
           (the subject) and which have been recorded in the same session.""" ;
