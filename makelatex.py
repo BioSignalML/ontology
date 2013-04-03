@@ -154,13 +154,6 @@ if __name__ == '__main__':
   term = None
   lasturi = ''
 
-  if SELECTED is None:
-    print """% !TEX root = ../Thesis.tex
-
-\chapter{The BioSignalML  Ontology}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{apx:ontology}
-"""
   print '{\\raggedright\\setstretch{1.1}\\setlength{\\parindent}{0pt}\\def\\UrlFont{\\small\\tt}'
 ##  print('\\vspace{3ex}')
   for p in PROPERTIES:
