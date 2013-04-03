@@ -70,4 +70,4 @@ if __name__ == '__main__':
     if subj.startswith('bsml:'):
       res = subj[5:]
       print ''.join(['  ', '%-14s = ' % res, ('Resource(NS.%-15s' % (res + ')')).rstrip(),
-                     "\n  '''%s'''" % docs if docs else '']).rstrip()
+                     '\n  """%s"""' % docs if docs else '']).rstrip()
