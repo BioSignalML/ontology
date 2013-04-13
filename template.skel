@@ -122,7 +122,7 @@
   <h3>Appendices</h3>
   <ol id="appendix">
    <li><a href="#references">References</a></li>
-   <li><a href="#changes">Changes in this version</a></li>
+   <li><a href="#changes">Change History</a></li>
    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 
@@ -252,7 +252,7 @@
   </div>
 
   <div id="changes">
-   <h2>B. Changes in this version</h2>
+   <h2>B. Change History</h2>
    <ul>
     HISTORY
     <li><p>24 June 2012</p>
@@ -267,11 +267,7 @@
       <li>Define 'resolution' of a SampleClock</li>
      </ul>
     </li>
-    <li>
-     <p>
-      <span class="todo">TODO</span> Update change history...
-     </p>
-    </li>
+    <li>...</li>
     <li><p>31 August 2011</p>
      <ul class="changes">
       <li>Rename 'sampleRate' property to 'rate'</li>
