@@ -58,6 +58,13 @@ bsml:Signal
       rdfs:subClassOf opb:OPB01015 ;
       .
 
+bsml:Segment
+      rdf:type owl:Class ;
+      dct:description
+        """A portion of a Signal or Recording, defined by restricting samples to some
+           interval in the sampling dimension.""" ;
+      .
+
 bsml:Event
       rdf:type owl:Class ;
       dct:description
@@ -278,9 +285,19 @@ bsml:clock
 bsml:tag
       rdf:type owl:ObjectProperty ;
       rdfs:domain bsml:Annotation ;
-      dct:description """A semantic tag given to a resource by an annotation.
+      dct:description """A semantic tag given to a resource by an annotation.""" ;
+      rdfs:comment """Tags are effectively controlled keywords.""" ;
+      .
 
-      Tags are effectively controlled keywords.""" ;
+bsml:uncertainty
+      rdf:type owl:ObjectProperty ;
+      dct:description
+        """A resource describing the measurement uncertainty associated with a Recording,
+           Signal, or Segment.""" ;
+      rdfs:domain [
+        a owl:Class ;
+        owl:unionOf (bsml:Recording bsml:Signal bsml:Segment) ;
+        ] ;
       .
 
 
