@@ -289,6 +289,12 @@ bsml:tag
       rdfs:comment """Tags are effectively controlled keywords.""" ;
       .
 
+bsml:time
+      rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+      dct:description "An instant or interval associated with a resource." ;
+      rdfs:range bsml:TemporalEntity ;
+      .
+
 bsml:uncertainty
       rdf:type owl:ObjectProperty ;
       dct:description
@@ -376,11 +382,6 @@ bsml:resolution
       dct:description "The resolution, in seconds, of a clock's timing." ;
       rdfs:domain bsml:SampleClock ;
       rdfs:range xsd:double .
-
-bsml:time
-      rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
-      dct:description "The temporal offset, from the beginning of a recording, to the start of some event." ;
-      rdfs:range xsd:duration .
 
 
 #################################################################
