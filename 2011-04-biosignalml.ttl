@@ -292,7 +292,7 @@ bsml:tag
 bsml:uncertainty
       rdf:type owl:ObjectProperty ;
       dct:description
-        """A resource describing the measurement uncertainty associated with a Recording,
+        """The URI of a resource describing the measurement uncertainty associated with a Recording,
            Signal, or Segment.""" ;
       rdfs:domain [
         a owl:Class ;
