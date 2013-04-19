@@ -1,16 +1,14 @@
-import os, time
+import sys, os, time
 import biosignalml.rdf as rdf
 
 
-BSML_NAMESPACE = 'http://www.biosignalml.org/ontologies/2011/04/biosignalml#'
-
-SOURCE = '2011-04-biosignalml.ttl'
-
+ONTOLOGY = 'http://www.biosignalml.org/ontologies/2011/04/biosignalml'
+SOURCE   = '2011-04-biosignalml.ttl'
 
 PREFIXES = { 'owl':  'http://www.w3.org/2002/07/owl#',
              'dcterms': 'http://purl.org/dc/terms/',
              'rdfs': 'http://www.w3.org/2000/01/rdf-schema#',
-             'bsml':  BSML_NAMESPACE,
+             'bsml':  '%s#' % ONTOLOGY,
            }
 
 CLASSES = [ 'owl:Class', 'owl:ObjectProperty', 'owl:DatatypeProperty', 'owl:NamedIndividual' ]
@@ -25,8 +23,21 @@ def abbreviate(u):
 
 
 if __name__ == '__main__':
+#-------------------------
 
   fullname = 'file://' + os.path.abspath(SOURCE)
+
+  g = rdf.Graph.create_from_resource(fullname, rdf.Format.TURTLE)
+  VERSION = None
+  for r in g.query('\n'.join(['prefix %s: <%s>' % (p, u) for p, u in PREFIXES.iteritems()]
+                           + ['',
+                              'select ?version where {',
+                              '  <%s> a owl:Ontology ; owl:versionInfo ?version .' % ONTOLOGY,
+                              '  }'])):
+    VERSION = r['version']
+    break
+  if VERSION is None:
+    sys,exit("'%s' does not contain '%s' ontology" % (SOURCE, ONTOLOGY))
 
   print '\n'.join([
     '"""',
@@ -34,19 +45,20 @@ if __name__ == '__main__':
     '',
     'Generated from %s at %s' % (fullname, time.asctime()),
     '',
-    'Full documentation of the ontology is at %s' % BSML_NAMESPACE[:-1],
+    'Full documentation of the ontology is at %s' % ONTOLOGY,
     '"""',
     '',
     'from biosignalml.rdf import Resource, NS as Namespace',
+    ''
+    'VERSION = "%s"' % VERSION,
     '',
     'class BSML(object):',
-    '  URI = "%s"' % BSML_NAMESPACE,
+    '  URI = "%s#"' % ONTOLOGY,
     '  NS = Namespace(URI)',
     '  prefix = NS.prefix',
     ])
 
   lastcls = ''
-  g = rdf.Graph.create_from_resource(fullname, rdf.Format.TURTLE)
   for r in g.query('\n'.join(['prefix %s: <%s>' % (p, u) for p, u in PREFIXES.iteritems()]
                            + ['',
                               'select ?class ?subject ?desc ?comment where {',
