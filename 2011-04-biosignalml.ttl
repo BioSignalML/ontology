@@ -248,13 +248,6 @@ bsml:dataset
       rdfs:range dctype:Dataset .
 
 
-bsml:format
-      rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
-      rdfs:subPropertyOf dct:format ;
-      dct:description "The format used to hold the recording." ;
-      rdfs:domain bsml:Recording ;
-      rdfs:range bsml:Format .
-
 bsml:signalType
       rdf:type owl:FunctionalProperty , owl:ObjectProperty ;
       dct:description "A signal's generic type." ;
