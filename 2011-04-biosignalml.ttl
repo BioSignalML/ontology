@@ -21,7 +21,10 @@
 #################################################################
 
 <http://www.biosignalml.org/ontologies/2011/04/biosignalml>
-      a owl:Ontology .
+      a owl:Ontology ;
+      owl:versionInfo "0.93.4" ;
+      .
+
 
 
 #################################################################
