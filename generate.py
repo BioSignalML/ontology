@@ -37,7 +37,7 @@ if __name__ == '__main__':
     VERSION = r['version']
     break
   if VERSION is None:
-    sys,exit("'%s' does not contain '%s' ontology" % (SOURCE, ONTOLOGY))
+    sys.exit("'%s' does not contain '%s' ontology" % (SOURCE, ONTOLOGY))
 
   print '\n'.join([
     '"""',
