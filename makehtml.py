@@ -1,11 +1,21 @@
 REPLACE = {
-  'VERSION':   "0.93.3",
-  'TIMESTAMP': "2013-04-13T23:29:00+13:00",
-  'DATE':      "13 April 2013",
-  'CURRENT':   "20130413",
-  'PREVIOUS':  "20130304",
+  'VERSION':   "0.93.4",
+  'TIMESTAMP': "2013-05-30T23:02:00+12:00",
+  'DATE':      "30 May 2013",
+  'CURRENT':   "20130530",
+  'PREVIOUS':  "20130413",
   'HISTORY':
- """<li><p>13 April 2013</p>
+
+ """<li><p>30 May 2013</p>
+     <ul class="changes">
+      <li>Update description of bsml:Device.</li>
+      <li>Tweak description of 'bsml:uncertainty'.</li>
+      <li>Set owl:versionInfo for the ontology.</li>
+      <li>Remove bsml:format -- we use dct:format in our RDF model.</li>
+      <li>Correctly define bsml:time.</li>
+     </ul>
+    </li>
+    <li><p>13 April 2013</p>
      <ul class="changes">
       <li>Rename bsml:cutoffFrequency to bsml:filterFrequency.</li>
       <li>Define bsml:Segment and bsml:uncertainty.</li>
