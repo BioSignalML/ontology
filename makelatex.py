@@ -3,9 +3,9 @@ import sys, os
 import biosignalml.rdf as rdf
 
 
-BSML_NAMESPACE = 'http://www.biosignalml.org/ontologies/2011/04/biosignalml#'
+ONTOLOGY = 'http://www.biosignalml.org/ontologies/2011/04/biosignalml'
 
-SOURCE = '2011-04-biosignalml.ttl'
+SOURCE   = '2011-04-biosignalml.ttl'
 
 
 PREFIXES = { 'rdf':  'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
@@ -14,7 +14,7 @@ PREFIXES = { 'rdf':  'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
              'owl':  'http://www.w3.org/2002/07/owl#',
              'dct':  'http://purl.org/dc/terms/',
              'time': 'http://www.w3.org/2006/time#',
-             'bsml':  BSML_NAMESPACE,
+             'bsml':  ONTOLOGY + '#',
            }
 
 PROPERTIES = [ ( ( 'Class', 'Classes', ['owl:Class']),
@@ -154,6 +154,24 @@ if __name__ == '__main__':
   term = None
   lasturi = ''
 
+  VERSION = None
+  for r in g.query('\n'.join(['prefix %s: <%s>' % (p, u) for p, u in PREFIXES.iteritems()]
+                           + ['',
+                              'select ?version where {',
+                              '  <%s> a owl:Ontology ; owl:versionInfo ?version .' % ONTOLOGY,
+                              '  }'])):
+    VERSION = r['version']
+    break
+  if VERSION is None:
+    sys.exit("'%s' does not contain '%s' ontology" % (SOURCE, ONTOLOGY))
+
+  print """The BioSignalML Ontology defines concepts used in the storage and
+exchange of biosignals, along with terms for common biosignal metadata elements.
+The ontology is available from \url{%(rdf)s} as RDF, with a human readable
+version at \url{%(rdf)s.html}.\n""" % dict(rdf = ONTOLOGY)
+
+  print "This documentation is generated from Version %s of the Ontology.\n" % VERSION
+
   print '{\\raggedright\\setstretch{1.1}\\setlength{\\parindent}{0pt}\\def\\UrlFont{\\small\\tt}'
 ##  print('\\vspace{3ex}')
   for p in PROPERTIES:
@@ -173,7 +191,7 @@ if __name__ == '__main__':
 
 
 
-                             + ['  filter( regex(str(?s), "^%s")' % BSML_NAMESPACE,
+                             + ['  filter( regex(str(?s), "^%s#")' % ONTOLOGY,
                                 '   && ( ' + ' || '.join(['?c = %s' % c for c in p[0][2]]) + ' ) )',
                                 '  } order by ?s']
                               )):
@@ -185,7 +203,6 @@ if __name__ == '__main__':
           term = Term(r['s'].uri, p[0][0], p[1], p[2])
           lasturi = uri
         term.add(r)
-
 
   if term: print term.latex()
   print '}'
