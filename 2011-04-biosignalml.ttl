@@ -133,7 +133,7 @@ bsml:Simulation
 bsml:Device
       rdf:type owl:Class ;
       rdfs:subClassOf bsml:Source ;
-      dct:description "The physical device that saved the output of a sensor into a format able to be stored." .
+      dct:description "A physical device that converts the output of a sensor into a format able to be stored." .
 
 
 bsml:Sensor
