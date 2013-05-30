@@ -44,7 +44,7 @@
    </a>
    <h1 about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="dc:title">The BioSignalML Ontology</h1>
    <h2>An ontology for working with biosignals</h2>
-   <h2>Version <span about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="owl:versionInfo" datatype="xsd:decimal">VERSION</span>
+   <h2>Version <span about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="owl:versionInfo">VERSION</span>
              - <span about="http://www.biosignalml.org/ontologies/2011/04/biosignalml#" property="dc:date"
                      content="TIMESTAMP" datatype="xsd:dateTime">DATE</span></h2>
    <dl>
