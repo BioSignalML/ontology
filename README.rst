@@ -19,5 +19,11 @@ Releasing a new Web version:
 
     # RELEASE is value of CURRENT in makehtml.py
     python makehtml.py
+    git commit makehtml.py
+    git tag -m"RELEASE" RELEASE
     ./makedoc.sh
     ./installdoc RELEASE
+    cd website
+    git commit .
+    git tag -m"RELEASE" RELEASE
+
