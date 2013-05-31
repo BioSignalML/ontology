@@ -26,4 +26,5 @@ Releasing a new Web version:
     cd website
     git commit .
     git tag -m"RELEASE" RELEASE
+    git push
 
