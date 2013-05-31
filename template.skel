@@ -100,11 +100,6 @@
 
   <hr />
 
-  <h2 id="abstract">Abstract</h2>
-  <p>This specification defines concepts used in the storage and
-    exchange of biosignals, along with terms for common biosignal metadata elements.
-  </p>
-
   <h2 id="status">Status of this Document</h2>
   <p>
     <strong>This is a work in progress!</strong> Comments are very welcome and can be sent
