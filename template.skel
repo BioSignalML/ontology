@@ -65,8 +65,7 @@
      (<a href="http://www.biosignalml.org/ontologies/2011/04/biosignalml-PREVIOUS.ttl">Turtle</a>)
     </dd>
     <dt>Last Update:</dt><dd>Date: DATE</dd>
-    <dt>Editors:</dt><dd>David Brooks, Auckland Bioengineering Institute</dd>
-    <dt>Acknowledgements:</dt><dd>See <a href="#acknowledgments">acknowledgements</a></dd>
+    <dt>Editors:</dt><dd>David Brooks, Auckland Bioengineering Institute.</dd>
    </dl>
 
    <div about="http://www.biosignalml.org/ontologies/2011/04/biosignalml.html" rel="dc:conformsTo"
@@ -94,7 +93,7 @@
    </p>
 
    <p class="copyright" style="clear:both">
-    This work is supported by ... <span class="todo">TODO</span>
+    This work is supported by the <a href="http://www.abi.auckland.ac.nz/uoa/">Auckland Bioengineering Institute</a>, University of Auckland, New Zealand.
    </p>
 
   </div>
@@ -102,19 +101,19 @@
   <hr />
 
   <h2 id="abstract">Abstract</h2>
-  <p>This specification defines the ....</p>
+  <p>This specification defines concepts used in the storage and
+    exchange of biosignals, along with terms for common biosignal metadata elements.
+  </p>
 
   <h2 id="status">Status of this Document</h2>
   <p>
-    <strong>This is a work in progress!</strong> This document is changing
-    on a daily if not hourly basis. Comments are very welcome, please send
-    them to the authors. Thank you.
+    <strong>This is a work in progress!</strong> Comments are very welcome, please send
+    them to the editors. Thank you.
   </p>
 
   <h2 id="contents">Table of Contents</h2>
   <ol id="toc">
    <li><a href="#intro">Introduction</a></li>
-   <li><a href="#model">The BioSignalML Model</a></li>
    <li><a href="#glance">BioSignalML ontology at a glance</a></li>
    <li><a href="#reference">Cross-reference for BioSignalML classes and properties</a></li>
   </ol>
@@ -123,7 +122,6 @@
   <ol id="appendix">
    <li><a href="#references">References</a></li>
    <li><a href="#changes">Change History</a></li>
-   <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 
   <hr />
@@ -134,22 +132,12 @@
    <h2>1. Introduction</h2>
 
    <p>
-    <span class="todo">TODO</span> Write some text...
-   </p>
-
-   <img src="/static/images/BSMLOntology.png" alt="BioSignalML Ontology diagram" width="907" height="501" class="centered" />
-
-  </div>
-
-  <hr />
-
-  <div id="model">
-   <h2>2. The BioSignalML Model</h2>
-   <p>
     This ontology defines concepts to describe the storage and exchange of biosignals,
     regardless of their underlying file format, and provides terms for common biosignal
     metadata.
    </p>
+
+   <img src="/static/images/BSMLOntology.png" alt="BioSignalML Ontology diagram" width="907" height="501" class="centered" />
 
    <p>
     A <b>Recording</b> contains individual signals, all of which have
@@ -162,6 +150,8 @@
     <dt>investigator</dt><dd>Who made the recording.</dd>
     <dt>starttime</dt><dd>When the recording began.</dd>
     <dt>duration</dt><dd>The length of the recording.</dd>
+    <dt>format</dt><dd>How actual data is stored.</dd>
+    <dt>dataset</dt><dd>Where data is stored.</dd>
    </dl>
 
    <p>
@@ -173,6 +163,7 @@
     <dt>label</dt><dd>A descriptive label.</dd>
     <dt>units</dt><dd>The physical units of the quantity measured.</dd>
     <dt>sensor</dt><dd>The transducer or electrode used to capture the signal.</dd>
+    <dt>source</dt><dd>What produced the signal.</dd>
     <dt>filter</dt><dd>Details of filtering applied prior to sampling.</dd>
     <dt>rate</dt><dd>The sampling frequency.</dd>
     <dt>times</dt><dd>An increasing sequence of sampling times.</dd>
@@ -191,16 +182,32 @@
 
    <p>
     <b>Annotations</b> are general notes, comments, or description of some qualitative measure,
-     and may be made about the whole, or some portion, of a Recording, Signal or Event.
+     and may be made about the whole, or some portion, of a Recording, Signal or Event. Core
+     attributes of Annotations are:
    </p>
+   <dl>
+    <dt>target</dt><dd>What the annotation describes.</dd>
+    <dt>comment</dt><dd>The text of the annotation.</dd>
+    <dt>tag</dt><dd>A semantic tag about the target.</dd>
+    <dt>creator</dt><dd>Who made the comment.</dd>
+    <dt>created</dt><dd>When it was made.</dd>
+   </dl>
+
+   <p>
+    A <b>Segment</b> is some portion of a sampled entity, defined by an interval in the sampling
+    dimension, intended to be used as the target of an Annotation. Core attributes of a Segment
+    are:
+   </p>
+   <dl>
+    <dt>source</dt><dd>The Signal or Recording which the Segment is part of.</dd>
+    <dt>time</dt><dd>The temporal interval over which the Segment is defined.</dd>
+   </dl>
 
    <p>
     Other ontologies, besides this one, are used for some of the above attributes,
-    in particular those from the DCMI Metadata Terms, OWL-Time, and
-    the TimeLine Ontology.
-   </p>
-   <p>
-    <span class="todo">TODO</span> -- add links to these ontologies....
+    in particular classes and properties from DCMI Metadata Terms [<a href="#ref1">1</a>],
+    OWL-Time [<a href="#ref2">2</a>], the TimeLine Ontology [<a href="#ref3">3</a>],
+    and the Units of Measurement Expressions ontology [<a href="#ref4">4</a>].
    </p>
 
   </div>
@@ -235,20 +242,12 @@
  <div class="back">
   <div id="references">
    <h2>A. References</h2>
-<!--
-   <dl>
-    <dt class="label" id="ref-some">name</dt>
-    <dd>
-     <em><a href="http://.../">long name</a></em> description...
-    </dd>
-    <dt class="label" id="ref-rfc2119">IETF RFC 2119</dt>
-    <dd>
-     <em><a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119: Key words
-     for use in RFCs to Indicate Requirement Levels</a></em>. Internet
-     Engineering Task Force, 1997 (see http://www.ietf.org/rfc/rfc2119.txt).
-    </dd>
-   </dl>
--->
+   <p>
+    <a id="ref1"/a>[1] DCMI Metadata Terms, <a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a>.<br/>
+    <a id="ref2"/a>[2] Time Ontology in OWL, <a href="http://www.w3.org/TR/owl-time/">http://www.w3.org/TR/owl-time/</a>.<br/>
+    <a id="ref3"/a>[3] The TimeLine Ontology, <a href="http://motools.sourceforge.net/timeline/timeline.html">http://motools.sourceforge.net/timeline/timeline.html</a>.<br/>
+    <a id="ref4"/a>[4] The Units of Measurement Expressions ontology, <a href="http://sbpax.org/uome/">http://sbpax.org/uome/</a>.<br/>
+   </p>
   </div>
 
   <div id="changes">
@@ -284,12 +283,6 @@
    </ul>
   </div>
 
-  <div id="acknowledgments">
-   <h2>C. Acknowledgements</h2>
-   <p>
-    <span class="todo">TODO</span> Acknowledge tools used to make this...
-   </p>
-  </div>
  </div>
 
  <div id="footer">
