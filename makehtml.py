@@ -1,12 +1,18 @@
 REPLACE = {
-  'VERSION':   "0.93.4",
-  'TIMESTAMP': "2013-05-30T23:02:00+12:00",
-  'DATE':      "30 May 2013",
-  'CURRENT':   "20130530",
-  'PREVIOUS':  "20130413",
+  'VERSION':   "0.93.5",
+  'TIMESTAMP': "2013-06-11T23:21:00+12:00",
+  'DATE':      "11 June 2013",
+  'CURRENT':   "20130611",
+  'PREVIOUS':  "20130530",
   'HISTORY':
 
- """<li><p>30 May 2013</p>
+ """<li><p>11 June 2013</p>
+     <ul class="changes">
+      <li>Tweak descriptions for bsml:TemporalEntity and bsml:dataset.</li>
+      <li>Remove unused prefix.</li>
+     </ul>
+    </li>
+    <li><p>30 May 2013</p>
      <ul class="changes">
       <li>Update description of bsml:Device.</li>
       <li>Tweak description of 'bsml:uncertainty'.</li>
