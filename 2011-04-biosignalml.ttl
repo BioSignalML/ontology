@@ -21,7 +21,7 @@
 
 <http://www.biosignalml.org/ontologies/2011/04/biosignalml>
       a owl:Ontology ;
-      owl:versionInfo "0.93.4" ;
+      owl:versionInfo "0.93.5" ;
       .
 
 
@@ -169,7 +169,7 @@ bsml:EventType
 bsml:TemporalEntity
       rdf:type owl:Class ;
       owl:equivalentClass time:TemporalEntity ;
-      dct:description "Some measurement of time, either as a particular point in time or as some interval." ;
+      dct:description "Some measurement of time, either a particular point in time or some interval." ;
       .
 
 bsml:Instant
@@ -242,7 +242,7 @@ bsml:sensor
 
 bsml:dataset
       rdf:type owl:FunctionalProperty, owl:ObjectProperty ;
-      dct:description "The location of actual signal data." ;
+      dct:description "The location of actual data, in a format suitable for computer processing." ;
       rdfs:domain [
         a owl:Class ;
         owl:unionOf (bsml:Recording bsml:Signal) ;
