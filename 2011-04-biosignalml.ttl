@@ -57,7 +57,7 @@ bsml:Signal
       dct:description
         """A sequence of periodic measurements of some physical quantity, ordered by some sampling
            dimension, normally time. A Signal is part of some Recording.""" ;
-      rdfs:subClassOf opb:OPB01015 ;
+      rdfs:subClassOf opb:OPB_01015 ;
       .
 
 bsml:Segment
@@ -71,7 +71,7 @@ bsml:Event
       rdf:type owl:Class ;
       dct:description
         """Something that has occurred in time, possibly for some duration.""" ;
-      rdfs:subClassOf opb:OPB01060 ;
+      rdfs:subClassOf opb:OPB_01060 ;
       .
 
 bsml:Annotation
