@@ -1,4 +1,4 @@
-@prefix : <http://www.biosignalml.org/ontologies/2011/04/biosignalml#> .
+@prefix : <http://www.biosignalml.org/ontologies/2024/12/biosignalml#> .
 @prefix cdt: <https://w3id.org/cdt/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix opb: <http://bhi.washington.edu/OPB#> .
@@ -7,15 +7,15 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix bsml: <http://www.biosignalml.org/ontologies/2011/04/biosignalml#> .
+@prefix bsml: <http://www.biosignalml.org/ontologies/2024/12/biosignalml#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix dctype: <http://purl.org/dc/dcmitype/> .
-@base <http://www.biosignalml.org/ontologies/2011/04/biosignalml> .
+@base <http://www.biosignalml.org/ontologies/2024/12/biosignalml> .
 
-<http://www.biosignalml.org/ontologies/2011/04/biosignalml> rdf:type owl:Ontology ;
+<http://www.biosignalml.org/ontologies/2024/12/biosignalml> rdf:type owl:Ontology ;
                                                              dct:title "The BioSignalML Ontology" ;
-                                                             owl:versionInfo "0.93.5" .
+                                                             owl:versionInfo "0.94.0" .
 
 #################################################################
 #    Annotation properties
@@ -49,7 +49,7 @@ cdt:ucumunit rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#clock
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#clock
 bsml:clock rdf:type owl:ObjectProperty ,
                     owl:FunctionalProperty ;
            rdfs:domain bsml:Signal ;
@@ -57,7 +57,7 @@ bsml:clock rdf:type owl:ObjectProperty ,
            dct:description "The sampling coordinates associated with a signal's data values." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#dataset
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#dataset
 bsml:dataset rdf:type owl:ObjectProperty ,
                       owl:FunctionalProperty ;
              rdfs:domain [ rdf:type owl:Class ;
@@ -69,7 +69,7 @@ bsml:dataset rdf:type owl:ObjectProperty ,
              dct:description "The location of actual data, in a format suitable for computer processing." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#eventType
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#eventType
 bsml:eventType rdf:type owl:ObjectProperty ,
                         owl:FunctionalProperty ;
                rdfs:domain bsml:Event ;
@@ -77,7 +77,7 @@ bsml:eventType rdf:type owl:ObjectProperty ,
                dct:description "The class or type of an Event." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#preFilter
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#preFilter
 bsml:preFilter rdf:type owl:ObjectProperty ,
                         owl:FunctionalProperty ;
                rdfs:domain bsml:Signal ;
@@ -85,7 +85,7 @@ bsml:preFilter rdf:type owl:ObjectProperty ,
                dct:description "Pre-filtering applied to a signal as part of collection." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#recording
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#recording
 bsml:recording rdf:type owl:ObjectProperty ,
                         owl:FunctionalProperty ;
                rdfs:domain bsml:Signal ;
@@ -93,14 +93,14 @@ bsml:recording rdf:type owl:ObjectProperty ,
                dct:description "The Recording a Signal is part of." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#sensor
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#sensor
 bsml:sensor rdf:type owl:ObjectProperty ;
             rdfs:domain bsml:Signal ;
             rdfs:range bsml:Sensor ;
             dct:description "What was used to collect or derive an electrical signal." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#signalType
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#signalType
 bsml:signalType rdf:type owl:ObjectProperty ,
                          owl:FunctionalProperty ;
                 rdfs:domain bsml:Signal ;
@@ -108,21 +108,21 @@ bsml:signalType rdf:type owl:ObjectProperty ,
                 dct:description "A signal's generic type." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#tag
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#tag
 bsml:tag rdf:type owl:ObjectProperty ;
          rdfs:domain bsml:Annotation ;
          dct:description "A semantic tag given to a resource by an annotation." ;
          rdfs:comment "Tags are effectively controlled keywords." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#time
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#time
 bsml:time rdf:type owl:ObjectProperty ,
                    owl:FunctionalProperty ;
           rdfs:range bsml:TemporalEntity ;
           dct:description "An instant or interval associated with a resource." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#uncertainty
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#uncertainty
 bsml:uncertainty rdf:type owl:ObjectProperty ;
                  rdfs:domain [ rdf:type owl:Class ;
                                owl:unionOf ( bsml:Recording
@@ -141,7 +141,7 @@ bsml:uncertainty rdf:type owl:ObjectProperty ;
 dct:temporal rdf:type owl:DatatypeProperty .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#dataBits
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#dataBits
 bsml:dataBits rdf:type owl:DatatypeProperty ,
                        owl:FunctionalProperty ;
               rdfs:domain bsml:Signal ;
@@ -149,7 +149,7 @@ bsml:dataBits rdf:type owl:DatatypeProperty ,
               dct:description "The binary-bit resolution of the analogue-to-digital convertor or sampling device used to digitise the signal." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#filterFrequency
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#filterFrequency
 bsml:filterFrequency rdf:type owl:DatatypeProperty ,
                               owl:FunctionalProperty ;
                      rdfs:domain bsml:Filter ;
@@ -157,7 +157,7 @@ bsml:filterFrequency rdf:type owl:DatatypeProperty ,
                      dct:description "The cutoff frequency in Hertz, of a filter." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#index
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#index
 bsml:index rdf:type owl:DatatypeProperty ,
                     owl:FunctionalProperty ;
            rdfs:domain bsml:Signal ;
@@ -165,7 +165,7 @@ bsml:index rdf:type owl:DatatypeProperty ,
            dct:description "The 0-origin position of a signal in a physical recording." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#maxFrequency
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#maxFrequency
 bsml:maxFrequency rdf:type owl:DatatypeProperty ,
                            owl:FunctionalProperty ;
                   rdfs:domain bsml:Signal ;
@@ -173,7 +173,7 @@ bsml:maxFrequency rdf:type owl:DatatypeProperty ,
                   dct:description "The maximum frequency in Hertz, contained in the signal." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#maxValue
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#maxValue
 bsml:maxValue rdf:type owl:DatatypeProperty ,
                        owl:FunctionalProperty ;
               rdfs:domain bsml:Signal ;
@@ -181,7 +181,7 @@ bsml:maxValue rdf:type owl:DatatypeProperty ,
               dct:description "The maximum value of the signal." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#minFrequency
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#minFrequency
 bsml:minFrequency rdf:type owl:DatatypeProperty ,
                            owl:FunctionalProperty ;
                   rdfs:domain bsml:Signal ;
@@ -189,7 +189,7 @@ bsml:minFrequency rdf:type owl:DatatypeProperty ,
                   dct:description "The minimum frequency in Hertz, contained in the signal." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#minValue
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#minValue
 bsml:minValue rdf:type owl:DatatypeProperty ,
                        owl:FunctionalProperty ;
               rdfs:domain bsml:Signal ;
@@ -197,7 +197,7 @@ bsml:minValue rdf:type owl:DatatypeProperty ,
               dct:description "The minimum value of the signal." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#offset
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#offset
 bsml:offset rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf dct:temporal ;
             rdf:type owl:FunctionalProperty ;
@@ -205,7 +205,7 @@ bsml:offset rdf:type owl:DatatypeProperty ;
             dct:description "The temporal offset in seconds, from the beginning of a recording to a signal's first sample." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#period
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#period
 bsml:period rdf:type owl:DatatypeProperty ,
                      owl:FunctionalProperty ;
             rdfs:domain bsml:UniformSignal ;
@@ -213,7 +213,7 @@ bsml:period rdf:type owl:DatatypeProperty ,
             dct:description "The sampling period in seconds, of a uniformly sampled signal." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#rate
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#rate
 bsml:rate rdf:type owl:DatatypeProperty ,
                    owl:FunctionalProperty ;
           rdfs:domain bsml:UniformSignal ;
@@ -221,7 +221,7 @@ bsml:rate rdf:type owl:DatatypeProperty ,
           dct:description "The sampling rate in Hertz, of a uniformly sampled signal." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#resolution
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#resolution
 bsml:resolution rdf:type owl:DatatypeProperty ,
                          owl:FunctionalProperty ;
                 rdfs:domain bsml:SampleClock ;
@@ -229,7 +229,7 @@ bsml:resolution rdf:type owl:DatatypeProperty ,
                 dct:description "The resolution in seconds, of a clock's timing." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#units
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#units
 bsml:units rdf:type owl:DatatypeProperty ,
                     owl:FunctionalProperty ;
            rdfs:domain bsml:Signal ;
@@ -261,159 +261,159 @@ dctype:Dataset rdf:type owl:Class .
 prv:DataItem rdf:type owl:Class .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Annotation
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Annotation
 bsml:Annotation rdf:type owl:Class ;
                 dct:description "A general note, comment, or qualitative measure about the whole of, or some portion of, a Recording, Signal or Event." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#BP_Filter
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#BP_Filter
 bsml:BP_Filter rdf:type owl:Class ;
                rdfs:subClassOf bsml:Filter ;
                dct:description "A band-pass filter." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Dataset
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Dataset
 bsml:Dataset rdf:type owl:Class .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Device
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Device
 bsml:Device rdf:type owl:Class ;
             rdfs:subClassOf bsml:Source ;
             dct:description "A physical device that converts the output of a sensor into a format able to be stored." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Electrode
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Electrode
 bsml:Electrode rdf:type owl:Class ;
                rdfs:subClassOf bsml:Sensor ;
                dct:description "An electrical conductor in contact with non-conducting material, through which electrical activity can be measured." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#ErrorTAG
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#ErrorTAG
 bsml:ErrorTAG rdf:type owl:Class ;
               rdfs:label "Error TAG" .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#ErrorTag
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#ErrorTag
 bsml:ErrorTag rdf:type owl:Class ;
               rdfs:subClassOf bsml:SemanticTag ;
               dct:description "A tag to indicate that an annotation relates to some form of error." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Event
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Event
 bsml:Event rdf:type owl:Class ;
            rdfs:subClassOf opb:OPB_01060 ;
            dct:description "Something that has occurred in time, possibly for some duration." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#EventType
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#EventType
 bsml:EventType rdf:type owl:Class ;
                dct:description "Something which is the class or type of an Event." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Filter
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Filter
 bsml:Filter rdf:type owl:Class ;
             dct:description "The class of filter that has been applied to a signal during data collection." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#HP_Filter
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#HP_Filter
 bsml:HP_Filter rdf:type owl:Class ;
                rdfs:subClassOf bsml:Filter ;
                dct:description "A high-pass filter." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Instant
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Instant
 bsml:Instant rdf:type owl:Class ;
              owl:equivalentClass time:Instant ;
              rdfs:subClassOf bsml:TemporalEntity ;
              dct:description "A particular point in time." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Interval
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Interval
 bsml:Interval rdf:type owl:Class ;
               owl:equivalentClass time:Interval ;
               rdfs:subClassOf bsml:TemporalEntity ;
               dct:description "A period in time." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#LP_Filter
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#LP_Filter
 bsml:LP_Filter rdf:type owl:Class ;
                rdfs:subClassOf bsml:Filter ;
                dct:description "A low-pass filter." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Notch_Filter
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Notch_Filter
 bsml:Notch_Filter rdf:type owl:Class ;
                   rdfs:subClassOf bsml:Filter ;
                   dct:description "A notch (blocking) filter." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Recording
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Recording
 bsml:Recording rdf:type owl:Class ;
                dct:description "A collection of Signals held as a named entity, all pertaining to one thing (the subject) and which have been recorded in the same session." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#RecordingGraph
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#RecordingGraph
 bsml:RecordingGraph rdf:type owl:Class ;
                     dct:description "A RDF graph containing Recording metadata, used for managing provenance." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#SampleClock
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#SampleClock
 bsml:SampleClock rdf:type owl:Class ;
                  dct:description "An increasing sequence of sample coordinates." ;
                  rdfs:comment "Several signals may use the same clock." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Segment
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Segment
 bsml:Segment rdf:type owl:Class ;
              dct:description "A portion of a Signal or Recording, defined by restricting samples to some interval in the sampling dimension." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#SemanticTag
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#SemanticTag
 bsml:SemanticTag rdf:type owl:Class ;
                  dct:description "A tag used to classify a resource." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Sensor
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Sensor
 bsml:Sensor rdf:type owl:Class ;
             dct:description "What actually captured a signal -- an electrode, transducer, etc." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Signal
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Signal
 bsml:Signal rdf:type owl:Class ;
             rdfs:subClassOf opb:OPB_01015 ;
             dct:description "A sequence of periodic measurements of some physical quantity, ordered by some sampling dimension, normally time. A Signal is part of some Recording." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#SignalType
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#SignalType
 bsml:SignalType rdf:type owl:Class ;
                 dct:description "The class or type of signal (e.g. EEG, ECG)." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Simulation
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Simulation
 bsml:Simulation rdf:type owl:Class ;
                 rdfs:subClassOf bsml:Source ;
                 dct:description "A computer simulation or modelling process that created the Signal or Recording." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Source
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Source
 bsml:Source rdf:type owl:Class ;
             dct:description "The source (i.e. device, simulation, etc) of a Signal or Recording." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#TemporalEntity
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#TemporalEntity
 bsml:TemporalEntity rdf:type owl:Class ;
                     owl:equivalentClass time:TemporalEntity ;
                     dct:description "Some measurement of time, either a particular point in time or some interval." .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Transducer
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#Transducer
 bsml:Transducer rdf:type owl:Class ;
                 rdfs:subClassOf bsml:Sensor ;
                 dct:description "A device that converts a measurable quantity into an electrical signal (e.g. thermistor, pressure sensor, strain gauge)." ;
                 rdfs:seeAlso <http://dbpedia.org/resource/Transducer> .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#UniformSignal
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#UniformSignal
 bsml:UniformSignal rdf:type owl:Class ;
                    rdfs:subClassOf bsml:Signal ;
                    dct:description "A signal that has been sampled at a constant rate." .
@@ -435,19 +435,19 @@ time:TemporalEntity rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#BP
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#BP
 bsml:BP rdf:type owl:NamedIndividual ,
                  bsml:SignalType ;
         rdfs:label "Blood Pressure" .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#ECG
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#ECG
 bsml:ECG rdf:type owl:NamedIndividual ,
                   bsml:SignalType ;
          rdfs:label "Electrocardiogram" .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#EEG
+###  http://www.biosignalml.org/ontologies/2024/12/biosignalml#EEG
 bsml:EEG rdf:type owl:NamedIndividual ,
                   bsml:SignalType ;
          rdfs:label "Electroencephalogram" .
