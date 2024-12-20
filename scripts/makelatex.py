@@ -155,7 +155,7 @@ if __name__ == '__main__':
   lasturi = ''
 
   VERSION = None
-  for r in g.query('\n'.join(['prefix %s: <%s>' % (p, u) for p, u in PREFIXES.iteritems()]
+  for r in g.query('\n'.join(['prefix %s: <%s>' % (p, u) for p, u in PREFIXES.items()]
                            + ['',
                               'select ?version where {',
                               '  <%s> a owl:Ontology ; owl:versionInfo ?version .' % ONTOLOGY,
@@ -167,8 +167,8 @@ if __name__ == '__main__':
 
   print("""The BioSignalML Ontology defines concepts used in the storage and
 exchange of biosignals, along with terms for common biosignal metadata elements.
-The ontology is available from \url{%(rdf)s} as RDF, with a human readable
-version at \url{%(rdf)s.html}.\n""" % dict(rdf = ONTOLOGY))
+The ontology is available from \\url{%(rdf)s} as RDF, with a human readable
+version at \\url{%(rdf)s.html}.\n""" % dict(rdf = ONTOLOGY))
 
   print("This documentation is generated from Version %s of the Ontology.\n" % VERSION)
 
@@ -176,16 +176,17 @@ version at \url{%(rdf)s.html}.\n""" % dict(rdf = ONTOLOGY))
 ##  print('\\vspace{3ex}')
   for p in PROPERTIES:
     if term: print(term.latex())
+    lasturi = ''
     term = None
-    print('\\%s{%s}' % (SECTION, p[0][1])
-    for r in g.query('\n'.join(['prefix %s: <%s>' % (x, u) for x, u in PREFIXES.iteritems()]
+    print('\\%s{%s}' % (SECTION, p[0][1]))
+    for r in g.query('\n'.join(['prefix %s: <%s>' % (x, u) for x, u in PREFIXES.items()]
                              + ['',
                                 'select ?s ' + ' '.join(['?%s' % n for n in p[1]])
                                              + ' '.join(['?%s' % n for n in p[2]]) + ' where {'
                                 '  ?s a ?c .',
                                ]
-                             + ['  optional { ?s %s ?%s } .' % (r[1], n) for n, r in p[1].iteritems()]
-                             + ['  optional { ?%s %s ?s } .' % (n, r[1]) for n, r in p[2].iteritems()]
+                             + ['  optional { ?s %s ?%s } .' % (r[1], n) for n, r in p[1].items()]
+                             + ['  optional { ?%s %s ?s } .' % (n, r[1]) for n, r in p[2].items()]
 ##                             + ['  optional { ?s %s [ owl:unionOf (?u1 ?u2) ] }' % p[1][prop][1]
 ##                                     for prop in ['domain', 'range'] if p[1].get(prop, None) ]
 
@@ -199,10 +200,13 @@ version at \url{%(rdf)s.html}.\n""" % dict(rdf = ONTOLOGY))
       uri = abbreviate(r['s'])
       if SELECTED is None or uri in SELECTED:
         if uri != lasturi:
-          if term: print(term.latex())
+          if term is not None:
+            print(term.latex())
           term = Term(r['s'].uri, p[0][0], p[1], p[2])
           lasturi = uri
-        term.add(r)
+        if term is not None:
+          term.add(r)
 
-  if term: print(term.latex())
+  if term is not None:
+    print(term.latex())
   print('}')

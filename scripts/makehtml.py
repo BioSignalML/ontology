@@ -54,7 +54,7 @@ skel = open('template.skel', 'r')
 skeleton = skel.read()
 skel.close()
 
-for key, value in REPLACE.iteritems():
+for key, value in REPLACE.items():
   skeleton = skeleton.replace(key, value)
 
 html = open('template.html', 'w')
