@@ -1,4 +1,5 @@
 @prefix : <http://www.biosignalml.org/ontologies/2011/04/biosignalml#> .
+@prefix cdt: <https://w3id.org/cdt/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix opb: <http://bhi.washington.edu/OPB#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -10,7 +11,6 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix dctype: <http://purl.org/dc/dcmitype/> .
-@prefix uome-core: <http://www.sbpax.org/uome/core.owl#> .
 @base <http://www.biosignalml.org/ontologies/2011/04/biosignalml> .
 
 <http://www.biosignalml.org/ontologies/2011/04/biosignalml> rdf:type owl:Ontology ;
@@ -39,6 +39,10 @@ dct:title rdf:type owl:AnnotationProperty .
 
 ###  http://www.w3.org/2001/XMLSchema#duration
 xsd:duration rdf:type rdfs:Datatype .
+
+
+###  https://w3id.org/cdt/ucumunit
+cdt:ucumunit rdf:type rdfs:Datatype .
 
 
 #################################################################
@@ -128,15 +132,6 @@ bsml:uncertainty rdf:type owl:ObjectProperty ;
                              ] ;
                  dct:description """A resource describing the measurement uncertainty associated with a Recording,
            Signal, or Segment.""" .
-
-
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#units
-bsml:units rdf:type owl:ObjectProperty ,
-                    owl:FunctionalProperty ;
-           rdfs:domain bsml:Signal ;
-           rdfs:range bsml:UnitOfMeasure ;
-           dct:description "The physical units that are represented by a signal's data values." ;
-           rdfs:comment "Specification of units allows for consistency checking and automatic conversion." .
 
 
 #################################################################
@@ -234,6 +229,18 @@ bsml:resolution rdf:type owl:DatatypeProperty ,
                 rdfs:domain bsml:SampleClock ;
                 rdfs:range xsd:double ;
                 dct:description "The resolution, in seconds, of a clock's timing." .
+
+
+###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#units
+bsml:units rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain bsml:Signal ;
+           rdfs:range xsd:string ,
+                      cdt:ucumunit ;
+           dct:description "The physical units that are represented by a signal's data values. Units are to described using codes from the Unified Code for Units of Measurement (UCUM) code system." ;
+           rdfs:comment "Specification of units allows for consistency checking and automatic conversion." ;
+           rdfs:seeAlso "https://ci.mines-stetienne.fr/lindt/v4/custom_datatypes#ucumunit" ,
+                        "https://ucum.org/" .
 
 
 #################################################################
@@ -415,18 +422,6 @@ bsml:Transducer rdf:type owl:Class ;
 bsml:UniformSignal rdf:type owl:Class ;
                    rdfs:subClassOf bsml:Signal ;
                    dct:description "A signal that has been sampled at a constant rate." .
-
-
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#UnitOfMeasure
-bsml:UnitOfMeasure rdf:type owl:Class ;
-                   owl:equivalentClass uome-core:UnitOfMeasurement ;
-                   dct:description "The class used to represent the types of measurement units used by signals." ;
-                   rdfs:comment "Measurement units would normally be entities in a specialised units of measure ontology." ;
-                   rdfs:seeAlso <http://www.sbpax.org/uome/list.html> .
-
-
-###  http://www.sbpax.org/uome/core.owl#UnitOfMeasurement
-uome-core:UnitOfMeasurement rdf:type owl:Class .
 
 
 ###  http://www.w3.org/2006/time#Instant
