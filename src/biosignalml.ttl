@@ -453,29 +453,6 @@ bsml:EEG rdf:type owl:NamedIndividual ,
          rdfs:label "Electroencephalogram" .
 
 
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#ErrorTAG
-bsml:ErrorTAG rdf:type owl:NamedIndividual ,
-                       owl:Class ,
-                       bsml:ErrorTAG ,
-                       bsml:SemanticTag .
-
-
-###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Recording
-bsml:Recording rdf:type owl:NamedIndividual ,
-                        prv:DataItem .
-
-
-#################################################################
-#    Annotations
-#################################################################
-
-bsml:ErrorTAG rdfs:label "Error TAG" .
-
-
-bsml:Recording dct:description """A collection of Signals held as a named entity, all pertaining to one thing
-          (the subject) and which have been recorded in the same session.""" .
-
-
 #################################################################
 #    General axioms
 #################################################################
