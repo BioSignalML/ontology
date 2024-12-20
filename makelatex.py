@@ -131,7 +131,7 @@ class Term(object):
 ##    doc.append('\\vspace{3ex}')
     doc.append('')
     return '\n'.join(doc)
-    
+
 
 if __name__ == '__main__':
 #-------------------------
@@ -165,19 +165,19 @@ if __name__ == '__main__':
   if VERSION is None:
     sys.exit("'%s' does not contain '%s' ontology" % (SOURCE, ONTOLOGY))
 
-  print """The BioSignalML Ontology defines concepts used in the storage and
+  print("""The BioSignalML Ontology defines concepts used in the storage and
 exchange of biosignals, along with terms for common biosignal metadata elements.
 The ontology is available from \url{%(rdf)s} as RDF, with a human readable
-version at \url{%(rdf)s.html}.\n""" % dict(rdf = ONTOLOGY)
+version at \url{%(rdf)s.html}.\n""" % dict(rdf = ONTOLOGY))
 
-  print "This documentation is generated from Version %s of the Ontology.\n" % VERSION
+  print("This documentation is generated from Version %s of the Ontology.\n" % VERSION)
 
-  print '{\\raggedright\\setstretch{1.1}\\setlength{\\parindent}{0pt}\\def\\UrlFont{\\small\\tt}'
+  print('{\\raggedright\\setstretch{1.1}\\setlength{\\parindent}{0pt}\\def\\UrlFont{\\small\\tt}')
 ##  print('\\vspace{3ex}')
   for p in PROPERTIES:
-    if term: print term.latex()
+    if term: print(term.latex())
     term = None
-    print '\\%s{%s}' % (SECTION, p[0][1])
+    print('\\%s{%s}' % (SECTION, p[0][1])
     for r in g.query('\n'.join(['prefix %s: <%s>' % (x, u) for x, u in PREFIXES.iteritems()]
                              + ['',
                                 'select ?s ' + ' '.join(['?%s' % n for n in p[1]])
@@ -199,10 +199,10 @@ version at \url{%(rdf)s.html}.\n""" % dict(rdf = ONTOLOGY)
       uri = abbreviate(r['s'])
       if SELECTED is None or uri in SELECTED:
         if uri != lasturi:
-          if term: print term.latex()
+          if term: print(term.latex())
           term = Term(r['s'].uri, p[0][0], p[1], p[2])
           lasturi = uri
         term.add(r)
 
-  if term: print term.latex()
-  print '}'
+  if term: print(term.latex())
+  print('}')

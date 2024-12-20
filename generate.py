@@ -39,7 +39,7 @@ if __name__ == '__main__':
   if VERSION is None:
     sys.exit("'%s' does not contain '%s' ontology" % (SOURCE, ONTOLOGY))
 
-  print '\n'.join([
+  print('\n'.join([
     '"""',
     'Provide access to the BioSignalML ontology.',
     '',
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     '  URI = "%s#"' % ONTOLOGY,
     '  NS = Namespace(URI)',
     '  prefix = NS.prefix',
-    ])     #'
+    ]))     #'
 
   lastcls = ''
   for r in g.query('\n'.join(['prefix %s: <%s>' % (p, u) for p, u in PREFIXES.iteritems()]
@@ -83,10 +83,10 @@ if __name__ == '__main__':
     docs  = '\n\n'.join(doc)
 
     if lastcls != cls:
-      print '\n# %s resources:' % cls
+      print('\n# %s resources:' % cls)
       lastcls = cls
 
     if subj.startswith('bsml:'):
       res = subj[5:]
-      print ''.join(['  ', '%-14s = ' % res, ('Resource(NS.%-15s' % (res + ')')).rstrip(),
-                     '\n  """**%s**: %s"""' % (cls, docs if docs else '')]).rstrip()
+      print(''.join(['  ', '%-14s = ' % res, ('Resource(NS.%-15s' % (res + ')')).rstrip(),
+                     '\n  """**%s**: %s"""' % (cls, docs if docs else '')]).rstrip())
