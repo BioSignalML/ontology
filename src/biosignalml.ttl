@@ -130,8 +130,7 @@ bsml:uncertainty rdf:type owl:ObjectProperty ;
                                              bsml:Signal
                                            )
                              ] ;
-                 dct:description """A resource describing the measurement uncertainty associated with a Recording,
-           Signal, or Segment.""" .
+                 dct:description "A resource describing the measurement uncertainty associated with a Recording, Signal, or Segment." .
 
 
 #################################################################
@@ -147,8 +146,7 @@ bsml:dataBits rdf:type owl:DatatypeProperty ,
                        owl:FunctionalProperty ;
               rdfs:domain bsml:Signal ;
               rdfs:range xsd:integer ;
-              dct:description """The binary-bit resolution of the analogue-to-digital convertor or
-        sampling device used to digitise the signal.""" .
+              dct:description "The binary-bit resolution of the analogue-to-digital convertor or sampling device used to digitise the signal." .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#filterFrequency
@@ -156,7 +154,7 @@ bsml:filterFrequency rdf:type owl:DatatypeProperty ,
                               owl:FunctionalProperty ;
                      rdfs:domain bsml:Filter ;
                      rdfs:range xsd:double ;
-                     dct:description "The cutoff frequency, in Hertz, of a filter." .
+                     dct:description "The cutoff frequency in Hertz, of a filter." .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#index
@@ -172,7 +170,7 @@ bsml:maxFrequency rdf:type owl:DatatypeProperty ,
                            owl:FunctionalProperty ;
                   rdfs:domain bsml:Signal ;
                   rdfs:range xsd:double ;
-                  dct:description "The maximum frequency, in Hertz, contained in the signal." .
+                  dct:description "The maximum frequency in Hertz, contained in the signal." .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#maxValue
@@ -188,7 +186,7 @@ bsml:minFrequency rdf:type owl:DatatypeProperty ,
                            owl:FunctionalProperty ;
                   rdfs:domain bsml:Signal ;
                   rdfs:range xsd:double ;
-                  dct:description "The minimum frequency, in Hertz, contained in the signal." .
+                  dct:description "The minimum frequency in Hertz, contained in the signal." .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#minValue
@@ -204,7 +202,7 @@ bsml:offset rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf dct:temporal ;
             rdf:type owl:FunctionalProperty ;
             rdfs:range xsd:duration ;
-            dct:description "The temporal offset, from the beginning of a recording, to a signal's first sample." .
+            dct:description "The temporal offset in seconds, from the beginning of a recording to a signal's first sample." .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#period
@@ -212,7 +210,7 @@ bsml:period rdf:type owl:DatatypeProperty ,
                      owl:FunctionalProperty ;
             rdfs:domain bsml:UniformSignal ;
             rdfs:range xsd:double ;
-            dct:description "The sampling period, in seconds, of a uniformly sampled signal." .
+            dct:description "The sampling period in seconds, of a uniformly sampled signal." .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#rate
@@ -220,7 +218,7 @@ bsml:rate rdf:type owl:DatatypeProperty ,
                    owl:FunctionalProperty ;
           rdfs:domain bsml:UniformSignal ;
           rdfs:range xsd:double ;
-          dct:description "The sampling rate, in Hertz, of a uniformly sampled signal." .
+          dct:description "The sampling rate in Hertz, of a uniformly sampled signal." .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#resolution
@@ -228,7 +226,7 @@ bsml:resolution rdf:type owl:DatatypeProperty ,
                          owl:FunctionalProperty ;
                 rdfs:domain bsml:SampleClock ;
                 rdfs:range xsd:double ;
-                dct:description "The resolution, in seconds, of a clock's timing." .
+                dct:description "The resolution in seconds, of a clock's timing." .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#units
@@ -265,8 +263,7 @@ prv:DataItem rdf:type owl:Class .
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Annotation
 bsml:Annotation rdf:type owl:Class ;
-                dct:description """A general note, comment, or qualitative measure about the whole of,
-           or some portion of, a Recording, Signal or Event.""" .
+                dct:description "A general note, comment, or qualitative measure about the whole of, or some portion of, a Recording, Signal or Event." .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#BP_Filter
@@ -288,12 +285,12 @@ bsml:Device rdf:type owl:Class ;
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Electrode
 bsml:Electrode rdf:type owl:Class ;
                rdfs:subClassOf bsml:Sensor ;
-               dct:description """An electrical conductor in contact with non-conducting material, through which
-            electrical activity can be measured.""" .
+               dct:description "An electrical conductor in contact with non-conducting material, through which electrical activity can be measured." .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#ErrorTAG
-bsml:ErrorTAG rdf:type owl:Class .
+bsml:ErrorTAG rdf:type owl:Class ;
+              rdfs:label "Error TAG" .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#ErrorTag
@@ -351,7 +348,8 @@ bsml:Notch_Filter rdf:type owl:Class ;
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Recording
-bsml:Recording rdf:type owl:Class .
+bsml:Recording rdf:type owl:Class ;
+               dct:description "A collection of Signals held as a named entity, all pertaining to one thing (the subject) and which have been recorded in the same session." .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#RecordingGraph
@@ -367,8 +365,7 @@ bsml:SampleClock rdf:type owl:Class ;
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Segment
 bsml:Segment rdf:type owl:Class ;
-             dct:description """A portion of a Signal or Recording, defined by restricting samples to some
-           interval in the sampling dimension.""" .
+             dct:description "A portion of a Signal or Recording, defined by restricting samples to some interval in the sampling dimension." .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#SemanticTag
@@ -384,8 +381,7 @@ bsml:Sensor rdf:type owl:Class ;
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Signal
 bsml:Signal rdf:type owl:Class ;
             rdfs:subClassOf opb:OPB_01015 ;
-            dct:description """A sequence of periodic measurements of some physical quantity, ordered by some sampling
-           dimension, normally time. A Signal is part of some Recording.""" .
+            dct:description "A sequence of periodic measurements of some physical quantity, ordered by some sampling dimension, normally time. A Signal is part of some Recording." .
 
 
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#SignalType
@@ -413,8 +409,7 @@ bsml:TemporalEntity rdf:type owl:Class ;
 ###  http://www.biosignalml.org/ontologies/2011/04/biosignalml#Transducer
 bsml:Transducer rdf:type owl:Class ;
                 rdfs:subClassOf bsml:Sensor ;
-                dct:description """A device that converts a measurable quantity into an electrical signal
-           (e.g. thermistor, pressure sensor, strain gauge).""" ;
+                dct:description "A device that converts a measurable quantity into an electrical signal (e.g. thermistor, pressure sensor, strain gauge)." ;
                 rdfs:seeAlso <http://dbpedia.org/resource/Transducer> .
 
 
