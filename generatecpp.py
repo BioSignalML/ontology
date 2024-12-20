@@ -49,6 +49,7 @@ if __name__ == '__main__':
     '**/',
     '',
     '#ifndef BSML_ONTOLOGY_H',
+    '#define BSML_ONTOLOGY_H',
     '',
     '#include "rdf/rdf.h"',
     '#include "rdf/defs.h"',
